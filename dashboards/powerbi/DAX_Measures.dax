@@ -1,0 +1,138 @@
+// =============================================================================
+// DashCart - DAX measures
+// Create an empty table:  Home -> Enter data -> name it "_Measures" -> Load,
+// then New measure for each block below (Format strings are given in comments).
+// Every measure reproduces the Snowflake mart logic (sql/04) so the numbers on the
+// report equal the README key findings.
+// =============================================================================
+
+// ---------------------------------------------------------------- Volume
+Orders = COUNTROWS ( FactOrders )                                                    // #,0
+Delivered Orders = CALCULATE ( [Orders], FactOrders[is_delivered] = 1 )              // #,0
+Cancelled Orders = CALCULATE ( [Orders], FactOrders[is_cancelled] = 1 )              // #,0
+Cancellation Rate = DIVIDE ( [Cancelled Orders], [Orders] )                          // 0.0%
+Active Customers = DISTINCTCOUNT ( FactOrders[customer_id] )                         // #,0
+Units Sold = SUM ( FactOrders[units] )                                               // #,0
+
+// ---------------------------------------------------------------- Money (₹)
+GMV = SUM ( FactOrders[gross_item_value] )                                           // ₹ #,0
+Delivered GMV = CALCULATE ( [GMV], FactOrders[is_delivered] = 1 )
+Net Revenue = SUM ( FactOrders[net_revenue] )                                        // ₹ #,0
+Discounts = SUM ( FactOrders[discount_amount] )
+COGS = CALCULATE ( SUM ( FactOrders[cogs] ), FactOrders[is_delivered] = 1 )
+Contribution Margin = SUM ( FactOrders[contribution_margin] )
+CM % of GMV = DIVIDE ( [Contribution Margin], [Delivered GMV] )                      // 0.0%   (README: ~4.5%)
+Discount % of GMV = DIVIDE ( [Discounts], [GMV] )                                    // 0.0%
+AOV = DIVIDE ( [Delivered GMV], [Delivered Orders] )                                 // ₹ #,0  (README: ₹715)
+CM per Order = DIVIDE ( [Contribution Margin], [Delivered Orders] )                  // ₹ #,0.0
+
+// Indian number display: 6.42 Cr / 12.3 L   (use as card "Data label" via Format -> Dynamic)
+GMV (Cr) = FORMAT ( DIVIDE ( [GMV], 1e7 ), "₹#,0.00" ) & " Cr"
+Net Revenue (Cr) = FORMAT ( DIVIDE ( [Net Revenue], 1e7 ), "₹#,0.00" ) & " Cr"
+Fmt INR =
+VAR v = [Net Revenue]
+RETURN SWITCH ( TRUE (),
+    ABS ( v ) >= 1e7, FORMAT ( v / 1e7, "₹#,0.00" ) & " Cr",
+    ABS ( v ) >= 1e5, FORMAT ( v / 1e5, "₹#,0.00" ) & " L",
+    FORMAT ( v, "₹#,0" ) )
+
+// ---------------------------------------------------------------- SLA
+Timed Orders = CALCULATE ( [Orders], NOT ISBLANK ( FactOrders[delivery_minutes] ) )
+On-time Orders = CALCULATE ( [Orders], FactOrders[is_on_time] = 1 )
+On-time Rate = DIVIDE ( [On-time Orders], [Timed Orders] )                           // 0.0%  (README: 72.7%)
+Late Rate = 1 - [On-time Rate]                                                       // 0.0%
+Avg Delivery Min = AVERAGE ( FactOrders[delivery_minutes] )                          // 0.0
+Avg Pack Min = AVERAGE ( FactOrders[pack_minutes] )                                  // 0.0
+Avg Ride Min = AVERAGE ( FactOrders[ride_minutes] )                                  // 0.0
+P90 Delivery Min = PERCENTILEX.INC (
+    FILTER ( FactOrders, NOT ISBLANK ( FactOrders[delivery_minutes] ) ),
+    FactOrders[delivery_minutes], 0.9 )                                              // 0.0
+SLA Target = 0.85                                                                    // 0%  (what-if line on the trend)
+SLA Gap (pp) = ( [On-time Rate] - [SLA Target] ) * 100                               // +0.0;-0.0
+
+// Conditional colour for SLA cards / table cells (Format -> fx -> Field value)
+SLA Colour =
+SWITCH ( TRUE (),
+    ISBLANK ( [On-time Rate] ), "#898781",
+    [On-time Rate] >= 0.80, "#0ca30c",
+    [On-time Rate] >= 0.65, "#fab219",
+    "#d03b3b" )
+
+// ---------------------------------------------------------------- Time intelligence
+// (Mark DimDate as a date table: Table tools -> Mark as date table -> DimDate[date])
+GMV PM = CALCULATE ( [GMV], DATEADD ( DimDate[date], -1, MONTH ) )
+GMV MoM % = DIVIDE ( [GMV] - [GMV PM], [GMV PM] )                                    // +0.0%;-0.0%
+GMV PY = CALCULATE ( [GMV], SAMEPERIODLASTYEAR ( DimDate[date] ) )
+GMV YoY % = DIVIDE ( [GMV] - [GMV PY], [GMV PY] )                                    // +0.0%;-0.0%
+Orders PY = CALCULATE ( [Orders], SAMEPERIODLASTYEAR ( DimDate[date] ) )
+Orders YoY % = DIVIDE ( [Orders] - [Orders PY], [Orders PY] )
+GMV MTD = TOTALMTD ( [GMV], DimDate[date] )
+GMV FYTD = TOTALYTD ( [GMV], DimDate[date], "03-31" )                                // Indian FY Apr-Mar
+Orders 7D Avg =
+AVERAGEX ( DATESINPERIOD ( DimDate[date], MAX ( DimDate[date] ), -7, DAY ), [Orders] )
+On-time 7D =
+CALCULATE ( [On-time Rate], DATESINPERIOD ( DimDate[date], MAX ( DimDate[date] ), -7, DAY ) )
+
+// ---------------------------------------------------------------- Events (README findings)
+Monsoon Late Rate = CALCULATE ( [Late Rate], DimDate[is_monsoon] = TRUE () )
+Non-monsoon Late Rate = CALCULATE ( [Late Rate], DimDate[is_monsoon] = FALSE () )
+Monsoon Lift (pp) = ( [Monsoon Late Rate] - [Non-monsoon Late Rate] ) * 100
+// Difference-in-differences: Mumbai lift minus the lift of the other metros (README: +34 pp)
+Monsoon DiD (pp) =
+VAR mumbai = CALCULATE ( [Monsoon Lift (pp)], DimStore[city] = "Mumbai" )
+VAR others = CALCULATE ( [Monsoon Lift (pp)], DimStore[city] IN { "Bengaluru", "Delhi" } )
+RETURN mumbai - others
+Festival Orders / Day =
+DIVIDE ( CALCULATE ( [Orders], DimDate[is_festival_window] = TRUE () ),
+         CALCULATE ( DISTINCTCOUNT ( FactOrders[order_date] ), DimDate[is_festival_window] = TRUE () ) )
+Normal Orders / Day =
+DIVIDE ( CALCULATE ( [Orders], DimDate[is_festival_window] = FALSE () ),
+         CALCULATE ( DISTINCTCOUNT ( FactOrders[order_date] ), DimDate[is_festival_window] = FALSE () ) )
+Festival Uplift % = DIVIDE ( [Festival Orders / Day], [Normal Orders / Day] ) - 1
+// Anomaly flag for the daily chart: day's avg delivery > 2x its 28-day trailing mean
+Delivery Anomaly =
+VAR d = MAX ( DimDate[date] )
+VAR base = CALCULATE ( [Avg Delivery Min], DATESINPERIOD ( DimDate[date], d - 1, -28, DAY ) )
+RETURN IF ( [Avg Delivery Min] > 2 * base, [Avg Delivery Min] )
+
+// ---------------------------------------------------------------- Store capacity
+Avg Utilisation = AVERAGE ( StoreHourly[utilization] )                               // 0%
+Peak Utilisation = MAX ( StoreHourly[utilization] )                                  // 0%
+
+// ---------------------------------------------------------------- Customers (Customer360 is filtered by DimCustomer)
+Customers = COUNTROWS ( Customer360 )                                                // #,0
+Avg LTV = AVERAGE ( Customer360[lifetime_net_revenue] )                              // ₹ #,0
+Avg Orders / Month = AVERAGE ( Customer360[orders_per_month] )                       // 0.00
+Churn Rate 45d = AVERAGE ( Customer360[is_churned_45d] )                             // 0.0%
+Plus LTV Multiple =
+DIVIDE ( CALCULATE ( [Avg LTV], DimCustomer[membership_tier] = "Plus" ),
+         CALCULATE ( [Avg LTV], DimCustomer[membership_tier] = "Standard" ) )        // 0.0"x"
+Plus Frequency Multiple =
+DIVIDE ( CALCULATE ( [Avg Orders / Month], DimCustomer[membership_tier] = "Plus" ),
+         CALCULATE ( [Avg Orders / Month], DimCustomer[membership_tier] = "Standard" ) )
+Revenue at Risk = CALCULATE ( SUM ( Customer360[lifetime_net_revenue] ), Customer360[is_churned_45d] = 1 )
+
+// Pareto: share of customers that make 80% of revenue (README: 33%)
+Pareto % Customers for 80% =
+VAR t = ADDCOLUMNS ( VALUES ( Customer360[customer_id] ),
+          "rev", CALCULATE ( SUM ( Customer360[lifetime_net_revenue] ) ) )
+VAR total = SUMX ( t, [rev] )
+VAR ranked = ADDCOLUMNS ( t, "cum", VAR r = [rev] RETURN SUMX ( FILTER ( t, [rev] >= r ), [rev] ) )
+RETURN DIVIDE ( COUNTROWS ( FILTER ( ranked, [cum] <= 0.8 * total ) ) + 1, COUNTROWS ( t ) )
+
+// ---------------------------------------------------------------- Category (FactOrderItems -> DimProduct)
+Item Revenue = SUM ( FactOrderItems[line_amount] )
+Item Gross Margin = SUM ( FactOrderItems[line_amount] ) - SUM ( FactOrderItems[line_cogs] )
+Item GM % = DIVIDE ( [Item Gross Margin], [Item Revenue] )                           // 0.0%
+Category Share = DIVIDE ( [Item Revenue], CALCULATE ( [Item Revenue], ALL ( DimProduct ) ) )
+
+// ---------------------------------------------------------------- Voice of customer
+Reviews # = COUNTROWS ( Reviews )
+Avg Rating = AVERAGE ( Reviews[rating] )                                             // 0.00
+Negative Reviews = CALCULATE ( [Reviews #], Reviews[sentiment] = "Negative" )
+Negative Share = DIVIDE ( [Negative Reviews], [Reviews #] )                          // 0.0%
+
+// ---------------------------------------------------------------- Dynamic titles
+Title Exec =
+"DashCart · " & FORMAT ( MIN ( DimDate[date] ), "d mmm yyyy" ) & " – " & FORMAT ( MAX ( DimDate[date] ), "d mmm yyyy" )
+& " · " & IF ( ISFILTERED ( DimStore[city] ), CONCATENATEX ( VALUES ( DimStore[city] ), DimStore[city], ", " ), "All cities" )

@@ -1,0 +1,337 @@
+product_id,sku,product_name,category,sub_category,brand,mrp,cost_price,is_perishable,gross_margin_pct_at_mrp
+P00001,SKU-FR00001,FarmFresh Fresh Fruits Pack 1,Fruits & Vegetables,Fresh Fruits,FarmFresh,81.0,75.48,True,0.0681
+P00002,SKU-FR00002,FarmFresh Fresh Fruits Pack 2,Fruits & Vegetables,Fresh Fruits,FarmFresh,92.0,82.7,True,0.1011
+P00003,SKU-FR00003,FarmFresh Fresh Fruits Pack 3,Fruits & Vegetables,Fresh Fruits,FarmFresh,176.0,151.71,True,0.138
+P00004,SKU-FR00004,FarmFresh Fresh Fruits Pack 4,Fruits & Vegetables,Fresh Fruits,FarmFresh,202.0,171.09,True,0.153
+P00005,SKU-FR00005,FarmFresh Fresh Fruits Pack 5,Fruits & Vegetables,Fresh Fruits,FarmFresh,119.0,98.3,True,0.1739
+P00006,SKU-FR00006,FarmFresh Fresh Fruits Pack 6,Fruits & Vegetables,Fresh Fruits,FarmFresh,67.0,62.77,True,0.0631
+P00007,SKU-FR00007,FarmFresh Fresh Fruits Pack 7,Fruits & Vegetables,Fresh Fruits,FarmFresh,50.0,41.94,True,0.1612
+P00008,SKU-FR00008,FarmFresh Fresh Fruits Pack 8,Fruits & Vegetables,Fresh Fruits,FarmFresh,132.0,121.1,True,0.0826
+P00009,SKU-FR00009,FarmFresh Fresh Fruits Pack 9,Fruits & Vegetables,Fresh Fruits,FarmFresh,140.0,128.61,True,0.0814
+P00010,SKU-FR00010,DashCart Fresh Fresh Fruits Pack 1,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,183.0,142.26,True,0.2226
+P00011,SKU-FR00011,DashCart Fresh Fresh Fruits Pack 2,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,114.0,92.41,True,0.1894
+P00012,SKU-FR00012,DashCart Fresh Fresh Fruits Pack 3,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,169.0,134.66,True,0.2032
+P00013,SKU-FR00013,DashCart Fresh Fresh Fruits Pack 4,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,49.0,41.79,True,0.1471
+P00014,SKU-FR00014,DashCart Fresh Fresh Fruits Pack 5,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,242.0,162.39,True,0.329
+P00015,SKU-FR00015,DashCart Fresh Fresh Fruits Pack 6,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,184.0,150.67,True,0.1811
+P00016,SKU-FR00016,DashCart Fresh Fresh Fruits Pack 7,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,243.0,170.32,True,0.2991
+P00017,SKU-FR00017,DashCart Fresh Fresh Fruits Pack 8,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,188.0,146.01,True,0.2234
+P00018,SKU-FR00018,DashCart Fresh Fresh Fruits Pack 9,Fruits & Vegetables,Fresh Fruits,DashCart Fresh,90.0,77.2,True,0.1422
+P00019,SKU-FR00019,FarmFresh Fresh Vegetables Pack 1,Fruits & Vegetables,Fresh Vegetables,FarmFresh,63.0,57.44,True,0.0883
+P00020,SKU-FR00020,FarmFresh Fresh Vegetables Pack 2,Fruits & Vegetables,Fresh Vegetables,FarmFresh,47.0,40.37,True,0.1411
+P00021,SKU-FR00021,FarmFresh Fresh Vegetables Pack 3,Fruits & Vegetables,Fresh Vegetables,FarmFresh,34.0,27.88,True,0.18
+P00022,SKU-FR00022,FarmFresh Fresh Vegetables Pack 4,Fruits & Vegetables,Fresh Vegetables,FarmFresh,95.0,79.73,True,0.1607
+P00023,SKU-FR00023,FarmFresh Fresh Vegetables Pack 5,Fruits & Vegetables,Fresh Vegetables,FarmFresh,60.0,51.13,True,0.1478
+P00024,SKU-FR00024,FarmFresh Fresh Vegetables Pack 6,Fruits & Vegetables,Fresh Vegetables,FarmFresh,76.0,64.53,True,0.1509
+P00025,SKU-FR00025,FarmFresh Fresh Vegetables Pack 7,Fruits & Vegetables,Fresh Vegetables,FarmFresh,24.0,21.16,True,0.1183
+P00026,SKU-FR00026,DashCart Fresh Fresh Vegetables Pack 1,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,19.0,14.56,True,0.2337
+P00027,SKU-FR00027,DashCart Fresh Fresh Vegetables Pack 2,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,50.0,42.34,True,0.1532
+P00028,SKU-FR00028,DashCart Fresh Fresh Vegetables Pack 3,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,26.0,19.37,True,0.255
+P00029,SKU-FR00029,DashCart Fresh Fresh Vegetables Pack 4,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,33.0,22.02,True,0.3327
+P00030,SKU-FR00030,DashCart Fresh Fresh Vegetables Pack 5,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,76.0,60.82,True,0.1997
+P00031,SKU-FR00031,DashCart Fresh Fresh Vegetables Pack 6,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,77.0,67.36,True,0.1252
+P00032,SKU-FR00032,DashCart Fresh Fresh Vegetables Pack 7,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,116.0,89.21,True,0.2309
+P00033,SKU-FR00033,DashCart Fresh Fresh Vegetables Pack 8,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,97.0,83.51,True,0.1391
+P00034,SKU-FR00034,DashCart Fresh Fresh Vegetables Pack 9,Fruits & Vegetables,Fresh Vegetables,DashCart Fresh,66.0,50.63,True,0.2329
+P00035,SKU-DA00035,Amul Milk Pack 1,Dairy & Bakery,Milk,Amul,55.0,48.05,True,0.1264
+P00036,SKU-DA00036,Amul Milk Pack 2,Dairy & Bakery,Milk,Amul,41.0,36.64,True,0.1063
+P00037,SKU-DA00037,Amul Milk Pack 3,Dairy & Bakery,Milk,Amul,52.0,45.68,True,0.1215
+P00038,SKU-DA00038,Amul Milk Pack 4,Dairy & Bakery,Milk,Amul,29.0,23.91,True,0.1755
+P00039,SKU-DA00039,Amul Milk Pack 5,Dairy & Bakery,Milk,Amul,70.0,64.43,True,0.0796
+P00040,SKU-DA00040,Amul Milk Pack 6,Dairy & Bakery,Milk,Amul,54.0,49.94,True,0.0752
+P00041,SKU-DA00041,Amul Milk Pack 7,Dairy & Bakery,Milk,Amul,60.0,54.04,True,0.0993
+P00042,SKU-DA00042,Nandini Milk Pack 1,Dairy & Bakery,Milk,Nandini,59.0,49.46,True,0.1617
+P00043,SKU-DA00043,Nandini Milk Pack 2,Dairy & Bakery,Milk,Nandini,64.0,59.19,True,0.0752
+P00044,SKU-DA00044,Nandini Milk Pack 3,Dairy & Bakery,Milk,Nandini,71.0,64.45,True,0.0923
+P00045,SKU-DA00045,Nandini Milk Pack 4,Dairy & Bakery,Milk,Nandini,30.0,25.87,True,0.1377
+P00046,SKU-DA00046,Nandini Milk Pack 5,Dairy & Bakery,Milk,Nandini,45.0,37.07,True,0.1762
+P00047,SKU-DA00047,Nandini Milk Pack 6,Dairy & Bakery,Milk,Nandini,66.0,59.11,True,0.1044
+P00048,SKU-DA00048,Nandini Milk Pack 7,Dairy & Bakery,Milk,Nandini,73.0,65.65,True,0.1007
+P00049,SKU-DA00049,Nandini Milk Pack 8,Dairy & Bakery,Milk,Nandini,52.0,47.02,True,0.0958
+P00050,SKU-DA00050,Nandini Milk Pack 9,Dairy & Bakery,Milk,Nandini,72.0,66.02,True,0.0831
+P00051,SKU-DA00051,Mother Dairy Milk Pack 1,Dairy & Bakery,Milk,Mother Dairy,48.0,38.45,True,0.199
+P00052,SKU-DA00052,Mother Dairy Milk Pack 2,Dairy & Bakery,Milk,Mother Dairy,70.0,58.46,True,0.1649
+P00053,SKU-DA00053,Mother Dairy Milk Pack 3,Dairy & Bakery,Milk,Mother Dairy,70.0,57.04,True,0.1851
+P00054,SKU-DA00054,Mother Dairy Milk Pack 4,Dairy & Bakery,Milk,Mother Dairy,52.0,46.58,True,0.1042
+P00055,SKU-DA00055,Mother Dairy Milk Pack 5,Dairy & Bakery,Milk,Mother Dairy,64.0,54.23,True,0.1527
+P00056,SKU-DA00056,Mother Dairy Milk Pack 6,Dairy & Bakery,Milk,Mother Dairy,46.0,42.63,True,0.0733
+P00057,SKU-DA00057,Mother Dairy Milk Pack 7,Dairy & Bakery,Milk,Mother Dairy,63.0,56.91,True,0.0967
+P00058,SKU-DA00058,Britannia Bread & Eggs Pack 1,Dairy & Bakery,Bread & Eggs,Britannia,115.0,104.22,True,0.0937
+P00059,SKU-DA00059,Britannia Bread & Eggs Pack 2,Dairy & Bakery,Bread & Eggs,Britannia,45.0,37.06,True,0.1764
+P00060,SKU-DA00060,Britannia Bread & Eggs Pack 3,Dairy & Bakery,Bread & Eggs,Britannia,48.0,43.92,True,0.085
+P00061,SKU-DA00061,Britannia Bread & Eggs Pack 4,Dairy & Bakery,Bread & Eggs,Britannia,86.0,70.31,True,0.1824
+P00062,SKU-DA00062,Britannia Bread & Eggs Pack 5,Dairy & Bakery,Bread & Eggs,Britannia,52.0,46.62,True,0.1035
+P00063,SKU-DA00063,Modern Bread & Eggs Pack 1,Dairy & Bakery,Bread & Eggs,Modern,118.0,102.65,True,0.1301
+P00064,SKU-DA00064,Modern Bread & Eggs Pack 2,Dairy & Bakery,Bread & Eggs,Modern,47.0,44.09,True,0.0619
+P00065,SKU-DA00065,Modern Bread & Eggs Pack 3,Dairy & Bakery,Bread & Eggs,Modern,55.0,50.68,True,0.0785
+P00066,SKU-DA00066,Modern Bread & Eggs Pack 4,Dairy & Bakery,Bread & Eggs,Modern,93.0,85.83,True,0.0771
+P00067,SKU-DA00067,Modern Bread & Eggs Pack 5,Dairy & Bakery,Bread & Eggs,Modern,78.0,65.74,True,0.1572
+P00068,SKU-DA00068,Modern Bread & Eggs Pack 6,Dairy & Bakery,Bread & Eggs,Modern,84.0,76.61,True,0.088
+P00069,SKU-DA00069,Modern Bread & Eggs Pack 7,Dairy & Bakery,Bread & Eggs,Modern,103.0,86.5,True,0.1602
+P00070,SKU-DA00070,Modern Bread & Eggs Pack 8,Dairy & Bakery,Bread & Eggs,Modern,98.0,90.32,True,0.0784
+P00071,SKU-DA00071,Modern Bread & Eggs Pack 9,Dairy & Bakery,Bread & Eggs,Modern,46.0,37.27,True,0.1898
+P00072,SKU-DA00072,DashCart Fresh Bread & Eggs Pack 1,Dairy & Bakery,Bread & Eggs,DashCart Fresh,69.0,55.94,True,0.1893
+P00073,SKU-DA00073,DashCart Fresh Bread & Eggs Pack 2,Dairy & Bakery,Bread & Eggs,DashCart Fresh,77.0,56.02,True,0.2725
+P00074,SKU-DA00074,DashCart Fresh Bread & Eggs Pack 3,Dairy & Bakery,Bread & Eggs,DashCart Fresh,116.0,94.44,True,0.1859
+P00075,SKU-DA00075,DashCart Fresh Bread & Eggs Pack 4,Dairy & Bakery,Bread & Eggs,DashCart Fresh,114.0,99.67,True,0.1257
+P00076,SKU-DA00076,DashCart Fresh Bread & Eggs Pack 5,Dairy & Bakery,Bread & Eggs,DashCart Fresh,82.0,60.2,True,0.2659
+P00077,SKU-DA00077,DashCart Fresh Bread & Eggs Pack 6,Dairy & Bakery,Bread & Eggs,DashCart Fresh,44.0,37.3,True,0.1523
+P00078,SKU-DA00078,DashCart Fresh Bread & Eggs Pack 7,Dairy & Bakery,Bread & Eggs,DashCart Fresh,71.0,46.7,True,0.3423
+P00079,SKU-DA00079,DashCart Fresh Bread & Eggs Pack 8,Dairy & Bakery,Bread & Eggs,DashCart Fresh,86.0,57.22,True,0.3347
+P00080,SKU-DA00080,Amul Paneer & Curd Pack 1,Dairy & Bakery,Paneer & Curd,Amul,105.0,87.16,True,0.1699
+P00081,SKU-DA00081,Amul Paneer & Curd Pack 2,Dairy & Bakery,Paneer & Curd,Amul,42.0,38.84,True,0.0752
+P00082,SKU-DA00082,Amul Paneer & Curd Pack 3,Dairy & Bakery,Paneer & Curd,Amul,156.0,129.24,True,0.1715
+P00083,SKU-DA00083,Amul Paneer & Curd Pack 4,Dairy & Bakery,Paneer & Curd,Amul,73.0,63.2,True,0.1342
+P00084,SKU-DA00084,Amul Paneer & Curd Pack 5,Dairy & Bakery,Paneer & Curd,Amul,125.0,102.31,True,0.1815
+P00085,SKU-DA00085,Amul Paneer & Curd Pack 6,Dairy & Bakery,Paneer & Curd,Amul,124.0,109.4,True,0.1177
+P00086,SKU-DA00086,Amul Paneer & Curd Pack 7,Dairy & Bakery,Paneer & Curd,Amul,92.0,80.99,True,0.1197
+P00087,SKU-DA00087,Amul Paneer & Curd Pack 8,Dairy & Bakery,Paneer & Curd,Amul,131.0,107.23,True,0.1815
+P00088,SKU-DA00088,Milky Mist Paneer & Curd Pack 1,Dairy & Bakery,Paneer & Curd,Milky Mist,104.0,94.15,True,0.0947
+P00089,SKU-DA00089,Milky Mist Paneer & Curd Pack 2,Dairy & Bakery,Paneer & Curd,Milky Mist,73.0,61.0,True,0.1644
+P00090,SKU-DA00090,Milky Mist Paneer & Curd Pack 3,Dairy & Bakery,Paneer & Curd,Milky Mist,154.0,142.49,True,0.0747
+P00091,SKU-DA00091,Milky Mist Paneer & Curd Pack 4,Dairy & Bakery,Paneer & Curd,Milky Mist,49.0,41.98,True,0.1433
+P00092,SKU-DA00092,Milky Mist Paneer & Curd Pack 5,Dairy & Bakery,Paneer & Curd,Milky Mist,60.0,49.47,True,0.1755
+P00093,SKU-DA00093,Milky Mist Paneer & Curd Pack 6,Dairy & Bakery,Paneer & Curd,Milky Mist,83.0,76.35,True,0.0801
+P00094,SKU-DA00094,Milky Mist Paneer & Curd Pack 7,Dairy & Bakery,Paneer & Curd,Milky Mist,169.0,154.94,True,0.0832
+P00095,SKU-DA00095,Milky Mist Paneer & Curd Pack 8,Dairy & Bakery,Paneer & Curd,Milky Mist,80.0,73.48,True,0.0815
+P00096,SKU-DA00096,Milky Mist Paneer & Curd Pack 9,Dairy & Bakery,Paneer & Curd,Milky Mist,56.0,52.47,True,0.063
+P00097,SKU-ST00097,Aashirvaad Atta & Rice Pack 1,Staples,Atta & Rice,Aashirvaad,188.0,175.31,False,0.0675
+P00098,SKU-ST00098,Aashirvaad Atta & Rice Pack 2,Staples,Atta & Rice,Aashirvaad,421.0,355.62,False,0.1553
+P00099,SKU-ST00099,Aashirvaad Atta & Rice Pack 3,Staples,Atta & Rice,Aashirvaad,310.0,277.6,False,0.1045
+P00100,SKU-ST00100,Aashirvaad Atta & Rice Pack 4,Staples,Atta & Rice,Aashirvaad,373.0,304.93,False,0.1825
+P00101,SKU-ST00101,Aashirvaad Atta & Rice Pack 5,Staples,Atta & Rice,Aashirvaad,567.0,529.53,False,0.0661
+P00102,SKU-ST00102,Aashirvaad Atta & Rice Pack 6,Staples,Atta & Rice,Aashirvaad,192.0,174.12,False,0.0931
+P00103,SKU-ST00103,Aashirvaad Atta & Rice Pack 7,Staples,Atta & Rice,Aashirvaad,230.0,197.81,False,0.14
+P00104,SKU-ST00104,Aashirvaad Atta & Rice Pack 8,Staples,Atta & Rice,Aashirvaad,323.0,301.39,False,0.0669
+P00105,SKU-ST00105,India Gate Atta & Rice Pack 1,Staples,Atta & Rice,India Gate,299.0,259.14,False,0.1333
+P00106,SKU-ST00106,India Gate Atta & Rice Pack 2,Staples,Atta & Rice,India Gate,147.0,121.03,False,0.1767
+P00107,SKU-ST00107,India Gate Atta & Rice Pack 3,Staples,Atta & Rice,India Gate,119.0,96.45,False,0.1895
+P00108,SKU-ST00108,India Gate Atta & Rice Pack 4,Staples,Atta & Rice,India Gate,146.0,120.0,False,0.1781
+P00109,SKU-ST00109,India Gate Atta & Rice Pack 5,Staples,Atta & Rice,India Gate,595.0,477.7,False,0.1971
+P00110,SKU-ST00110,Fortune Atta & Rice Pack 1,Staples,Atta & Rice,Fortune,527.0,447.98,False,0.1499
+P00111,SKU-ST00111,Fortune Atta & Rice Pack 2,Staples,Atta & Rice,Fortune,526.0,484.53,False,0.0788
+P00112,SKU-ST00112,Fortune Atta & Rice Pack 3,Staples,Atta & Rice,Fortune,390.0,338.52,False,0.132
+P00113,SKU-ST00113,Fortune Atta & Rice Pack 4,Staples,Atta & Rice,Fortune,570.0,498.87,False,0.1248
+P00114,SKU-ST00114,Fortune Atta & Rice Pack 5,Staples,Atta & Rice,Fortune,306.0,260.24,False,0.1495
+P00115,SKU-ST00115,Fortune Atta & Rice Pack 6,Staples,Atta & Rice,Fortune,239.0,219.98,False,0.0796
+P00116,SKU-ST00116,Tata Sampann Dal & Pulses Pack 1,Staples,Dal & Pulses,Tata Sampann,166.0,146.35,False,0.1184
+P00117,SKU-ST00117,Tata Sampann Dal & Pulses Pack 2,Staples,Dal & Pulses,Tata Sampann,122.0,108.4,False,0.1115
+P00118,SKU-ST00118,Tata Sampann Dal & Pulses Pack 3,Staples,Dal & Pulses,Tata Sampann,146.0,130.55,False,0.1058
+P00119,SKU-ST00119,Tata Sampann Dal & Pulses Pack 4,Staples,Dal & Pulses,Tata Sampann,148.0,124.91,False,0.156
+P00120,SKU-ST00120,Tata Sampann Dal & Pulses Pack 5,Staples,Dal & Pulses,Tata Sampann,133.0,107.35,False,0.1929
+P00121,SKU-ST00121,Tata Sampann Dal & Pulses Pack 6,Staples,Dal & Pulses,Tata Sampann,245.0,213.8,False,0.1273
+P00122,SKU-ST00122,Tata Sampann Dal & Pulses Pack 7,Staples,Dal & Pulses,Tata Sampann,139.0,120.24,False,0.135
+P00123,SKU-ST00123,Tata Sampann Dal & Pulses Pack 8,Staples,Dal & Pulses,Tata Sampann,233.0,197.73,False,0.1514
+P00124,SKU-ST00124,Tata Sampann Dal & Pulses Pack 9,Staples,Dal & Pulses,Tata Sampann,225.0,194.72,False,0.1346
+P00125,SKU-ST00125,DashCart Select Dal & Pulses Pack 1,Staples,Dal & Pulses,DashCart Select,132.0,93.85,False,0.289
+P00126,SKU-ST00126,DashCart Select Dal & Pulses Pack 2,Staples,Dal & Pulses,DashCart Select,116.0,83.54,False,0.2798
+P00127,SKU-ST00127,DashCart Select Dal & Pulses Pack 3,Staples,Dal & Pulses,DashCart Select,235.0,199.66,False,0.1504
+P00128,SKU-ST00128,DashCart Select Dal & Pulses Pack 4,Staples,Dal & Pulses,DashCart Select,191.0,163.9,False,0.1419
+P00129,SKU-ST00129,DashCart Select Dal & Pulses Pack 5,Staples,Dal & Pulses,DashCart Select,211.0,181.58,False,0.1394
+P00130,SKU-ST00130,DashCart Select Dal & Pulses Pack 6,Staples,Dal & Pulses,DashCart Select,248.0,210.4,False,0.1516
+P00131,SKU-ST00131,DashCart Select Dal & Pulses Pack 7,Staples,Dal & Pulses,DashCart Select,253.0,176.04,False,0.3042
+P00132,SKU-ST00132,DashCart Select Dal & Pulses Pack 8,Staples,Dal & Pulses,DashCart Select,187.0,130.9,False,0.3
+P00133,SKU-ST00133,Fortune Oils & Ghee Pack 1,Staples,Oils & Ghee,Fortune,625.0,504.72,False,0.1924
+P00134,SKU-ST00134,Fortune Oils & Ghee Pack 2,Staples,Oils & Ghee,Fortune,295.0,252.93,False,0.1426
+P00135,SKU-ST00135,Fortune Oils & Ghee Pack 3,Staples,Oils & Ghee,Fortune,198.0,169.04,False,0.1463
+P00136,SKU-ST00136,Fortune Oils & Ghee Pack 4,Staples,Oils & Ghee,Fortune,244.0,210.06,False,0.1391
+P00137,SKU-ST00137,Fortune Oils & Ghee Pack 5,Staples,Oils & Ghee,Fortune,489.0,427.76,False,0.1252
+P00138,SKU-ST00138,Fortune Oils & Ghee Pack 6,Staples,Oils & Ghee,Fortune,459.0,382.37,False,0.1669
+P00139,SKU-ST00139,Fortune Oils & Ghee Pack 7,Staples,Oils & Ghee,Fortune,628.0,547.05,False,0.1289
+P00140,SKU-ST00140,Fortune Oils & Ghee Pack 8,Staples,Oils & Ghee,Fortune,506.0,409.67,False,0.1904
+P00141,SKU-ST00141,Saffola Oils & Ghee Pack 1,Staples,Oils & Ghee,Saffola,211.0,195.75,False,0.0723
+P00142,SKU-ST00142,Saffola Oils & Ghee Pack 2,Staples,Oils & Ghee,Saffola,541.0,476.83,False,0.1186
+P00143,SKU-ST00143,Saffola Oils & Ghee Pack 3,Staples,Oils & Ghee,Saffola,612.0,517.77,False,0.154
+P00144,SKU-ST00144,Saffola Oils & Ghee Pack 4,Staples,Oils & Ghee,Saffola,344.0,280.09,False,0.1858
+P00145,SKU-ST00145,Saffola Oils & Ghee Pack 5,Staples,Oils & Ghee,Saffola,605.0,545.79,False,0.0979
+P00146,SKU-ST00146,Saffola Oils & Ghee Pack 6,Staples,Oils & Ghee,Saffola,362.0,324.34,False,0.104
+P00147,SKU-ST00147,Saffola Oils & Ghee Pack 7,Staples,Oils & Ghee,Saffola,236.0,216.96,False,0.0807
+P00148,SKU-ST00148,Saffola Oils & Ghee Pack 8,Staples,Oils & Ghee,Saffola,711.0,624.75,False,0.1213
+P00149,SKU-ST00149,Saffola Oils & Ghee Pack 9,Staples,Oils & Ghee,Saffola,374.0,313.35,False,0.1622
+P00150,SKU-ST00150,Amul Oils & Ghee Pack 1,Staples,Oils & Ghee,Amul,477.0,385.86,False,0.1911
+P00151,SKU-ST00151,Amul Oils & Ghee Pack 2,Staples,Oils & Ghee,Amul,616.0,537.7,False,0.1271
+P00152,SKU-ST00152,Amul Oils & Ghee Pack 3,Staples,Oils & Ghee,Amul,370.0,296.69,False,0.1981
+P00153,SKU-ST00153,Amul Oils & Ghee Pack 4,Staples,Oils & Ghee,Amul,578.0,466.35,False,0.1932
+P00154,SKU-ST00154,Amul Oils & Ghee Pack 5,Staples,Oils & Ghee,Amul,212.0,174.04,False,0.1791
+P00155,SKU-SN00155,Haldiram's Chips & Namkeen Pack 1,Snacks & Beverages,Chips & Namkeen,Haldiram's,23.0,19.73,False,0.1422
+P00156,SKU-SN00156,Haldiram's Chips & Namkeen Pack 2,Snacks & Beverages,Chips & Namkeen,Haldiram's,85.0,79.75,False,0.0618
+P00157,SKU-SN00157,Haldiram's Chips & Namkeen Pack 3,Snacks & Beverages,Chips & Namkeen,Haldiram's,60.0,49.47,False,0.1755
+P00158,SKU-SN00158,Haldiram's Chips & Namkeen Pack 4,Snacks & Beverages,Chips & Namkeen,Haldiram's,42.0,36.78,False,0.1243
+P00159,SKU-SN00159,Haldiram's Chips & Namkeen Pack 5,Snacks & Beverages,Chips & Namkeen,Haldiram's,59.0,52.97,False,0.1022
+P00160,SKU-SN00160,Haldiram's Chips & Namkeen Pack 6,Snacks & Beverages,Chips & Namkeen,Haldiram's,111.0,92.2,False,0.1694
+P00161,SKU-SN00161,Haldiram's Chips & Namkeen Pack 7,Snacks & Beverages,Chips & Namkeen,Haldiram's,22.0,17.61,False,0.1995
+P00162,SKU-SN00162,Haldiram's Chips & Namkeen Pack 8,Snacks & Beverages,Chips & Namkeen,Haldiram's,107.0,96.33,False,0.0997
+P00163,SKU-SN00163,Haldiram's Chips & Namkeen Pack 9,Snacks & Beverages,Chips & Namkeen,Haldiram's,102.0,94.36,False,0.0749
+P00164,SKU-SN00164,Lay's Chips & Namkeen Pack 1,Snacks & Beverages,Chips & Namkeen,Lay's,120.0,101.62,False,0.1532
+P00165,SKU-SN00165,Lay's Chips & Namkeen Pack 2,Snacks & Beverages,Chips & Namkeen,Lay's,82.0,76.04,False,0.0727
+P00166,SKU-SN00166,Lay's Chips & Namkeen Pack 3,Snacks & Beverages,Chips & Namkeen,Lay's,109.0,102.02,False,0.064
+P00167,SKU-SN00167,Lay's Chips & Namkeen Pack 4,Snacks & Beverages,Chips & Namkeen,Lay's,36.0,33.12,False,0.08
+P00168,SKU-SN00168,Lay's Chips & Namkeen Pack 5,Snacks & Beverages,Chips & Namkeen,Lay's,95.0,86.66,False,0.0878
+P00169,SKU-SN00169,Lay's Chips & Namkeen Pack 6,Snacks & Beverages,Chips & Namkeen,Lay's,110.0,93.29,False,0.1519
+P00170,SKU-SN00170,Lay's Chips & Namkeen Pack 7,Snacks & Beverages,Chips & Namkeen,Lay's,14.0,13.15,False,0.0607
+P00171,SKU-SN00171,Lay's Chips & Namkeen Pack 8,Snacks & Beverages,Chips & Namkeen,Lay's,16.0,13.68,False,0.145
+P00172,SKU-SN00172,Bingo Chips & Namkeen Pack 1,Snacks & Beverages,Chips & Namkeen,Bingo,36.0,29.56,False,0.1789
+P00173,SKU-SN00173,Bingo Chips & Namkeen Pack 2,Snacks & Beverages,Chips & Namkeen,Bingo,16.0,13.25,False,0.1719
+P00174,SKU-SN00174,Bingo Chips & Namkeen Pack 3,Snacks & Beverages,Chips & Namkeen,Bingo,112.0,93.17,False,0.1681
+P00175,SKU-SN00175,Bingo Chips & Namkeen Pack 4,Snacks & Beverages,Chips & Namkeen,Bingo,87.0,71.57,False,0.1774
+P00176,SKU-SN00176,Bingo Chips & Namkeen Pack 5,Snacks & Beverages,Chips & Namkeen,Bingo,14.0,12.76,False,0.0886
+P00177,SKU-SN00177,Bingo Chips & Namkeen Pack 6,Snacks & Beverages,Chips & Namkeen,Bingo,24.0,20.86,False,0.1308
+P00178,SKU-SN00178,Bingo Chips & Namkeen Pack 7,Snacks & Beverages,Chips & Namkeen,Bingo,92.0,78.37,False,0.1482
+P00179,SKU-SN00179,Bingo Chips & Namkeen Pack 8,Snacks & Beverages,Chips & Namkeen,Bingo,104.0,95.5,False,0.0817
+P00180,SKU-SN00180,Bingo Chips & Namkeen Pack 9,Snacks & Beverages,Chips & Namkeen,Bingo,91.0,83.08,False,0.087
+P00181,SKU-SN00181,Coca-Cola Soft Drinks Pack 1,Snacks & Beverages,Soft Drinks,Coca-Cola,44.0,36.99,False,0.1593
+P00182,SKU-SN00182,Coca-Cola Soft Drinks Pack 2,Snacks & Beverages,Soft Drinks,Coca-Cola,108.0,92.27,False,0.1456
+P00183,SKU-SN00183,Coca-Cola Soft Drinks Pack 3,Snacks & Beverages,Soft Drinks,Coca-Cola,25.0,21.34,False,0.1464
+P00184,SKU-SN00184,Coca-Cola Soft Drinks Pack 4,Snacks & Beverages,Soft Drinks,Coca-Cola,24.0,19.59,False,0.1838
+P00185,SKU-SN00185,Coca-Cola Soft Drinks Pack 5,Snacks & Beverages,Soft Drinks,Coca-Cola,84.0,76.92,False,0.0843
+P00186,SKU-SN00186,Coca-Cola Soft Drinks Pack 6,Snacks & Beverages,Soft Drinks,Coca-Cola,28.0,25.6,False,0.0857
+P00187,SKU-SN00187,Coca-Cola Soft Drinks Pack 7,Snacks & Beverages,Soft Drinks,Coca-Cola,108.0,94.59,False,0.1242
+P00188,SKU-SN00188,Coca-Cola Soft Drinks Pack 8,Snacks & Beverages,Soft Drinks,Coca-Cola,91.0,77.43,False,0.1491
+P00189,SKU-SN00189,Coca-Cola Soft Drinks Pack 9,Snacks & Beverages,Soft Drinks,Coca-Cola,72.0,66.22,False,0.0803
+P00190,SKU-SN00190,Pepsi Soft Drinks Pack 1,Snacks & Beverages,Soft Drinks,Pepsi,47.0,40.38,False,0.1409
+P00191,SKU-SN00191,Pepsi Soft Drinks Pack 2,Snacks & Beverages,Soft Drinks,Pepsi,83.0,70.48,False,0.1508
+P00192,SKU-SN00192,Pepsi Soft Drinks Pack 3,Snacks & Beverages,Soft Drinks,Pepsi,105.0,96.52,False,0.0808
+P00193,SKU-SN00193,Pepsi Soft Drinks Pack 4,Snacks & Beverages,Soft Drinks,Pepsi,66.0,58.31,False,0.1165
+P00194,SKU-SN00194,Pepsi Soft Drinks Pack 5,Snacks & Beverages,Soft Drinks,Pepsi,63.0,58.17,False,0.0767
+P00195,SKU-SN00195,Pepsi Soft Drinks Pack 6,Snacks & Beverages,Soft Drinks,Pepsi,32.0,28.83,False,0.0991
+P00196,SKU-SN00196,Paper Boat Soft Drinks Pack 1,Snacks & Beverages,Soft Drinks,Paper Boat,47.0,41.36,False,0.12
+P00197,SKU-SN00197,Paper Boat Soft Drinks Pack 2,Snacks & Beverages,Soft Drinks,Paper Boat,75.0,63.84,False,0.1488
+P00198,SKU-SN00198,Paper Boat Soft Drinks Pack 3,Snacks & Beverages,Soft Drinks,Paper Boat,57.0,50.32,False,0.1172
+P00199,SKU-SN00199,Paper Boat Soft Drinks Pack 4,Snacks & Beverages,Soft Drinks,Paper Boat,40.0,34.31,False,0.1422
+P00200,SKU-SN00200,Paper Boat Soft Drinks Pack 5,Snacks & Beverages,Soft Drinks,Paper Boat,49.0,45.81,False,0.0651
+P00201,SKU-SN00201,Paper Boat Soft Drinks Pack 6,Snacks & Beverages,Soft Drinks,Paper Boat,58.0,50.67,False,0.1264
+P00202,SKU-SN00202,Paper Boat Soft Drinks Pack 7,Snacks & Beverages,Soft Drinks,Paper Boat,40.0,34.39,False,0.1402
+P00203,SKU-SN00203,Paper Boat Soft Drinks Pack 8,Snacks & Beverages,Soft Drinks,Paper Boat,71.0,59.76,False,0.1583
+P00204,SKU-SN00204,Paper Boat Soft Drinks Pack 9,Snacks & Beverages,Soft Drinks,Paper Boat,78.0,66.2,False,0.1513
+P00205,SKU-SN00205,Tata Tea Tea & Coffee Pack 1,Snacks & Beverages,Tea & Coffee,Tata Tea,422.0,364.24,False,0.1369
+P00206,SKU-SN00206,Tata Tea Tea & Coffee Pack 2,Snacks & Beverages,Tea & Coffee,Tata Tea,258.0,219.91,False,0.1476
+P00207,SKU-SN00207,Tata Tea Tea & Coffee Pack 3,Snacks & Beverages,Tea & Coffee,Tata Tea,226.0,196.22,False,0.1318
+P00208,SKU-SN00208,Tata Tea Tea & Coffee Pack 4,Snacks & Beverages,Tea & Coffee,Tata Tea,399.0,325.55,False,0.1841
+P00209,SKU-SN00209,Tata Tea Tea & Coffee Pack 5,Snacks & Beverages,Tea & Coffee,Tata Tea,484.0,420.83,False,0.1305
+P00210,SKU-SN00210,Tata Tea Tea & Coffee Pack 6,Snacks & Beverages,Tea & Coffee,Tata Tea,299.0,247.58,False,0.172
+P00211,SKU-SN00211,Tata Tea Tea & Coffee Pack 7,Snacks & Beverages,Tea & Coffee,Tata Tea,205.0,168.67,False,0.1772
+P00212,SKU-SN00212,Tata Tea Tea & Coffee Pack 8,Snacks & Beverages,Tea & Coffee,Tata Tea,287.0,265.12,False,0.0762
+P00213,SKU-SN00213,Bru Tea & Coffee Pack 1,Snacks & Beverages,Tea & Coffee,Bru,93.0,76.46,False,0.1778
+P00214,SKU-SN00214,Bru Tea & Coffee Pack 2,Snacks & Beverages,Tea & Coffee,Bru,86.0,77.46,False,0.0993
+P00215,SKU-SN00215,Bru Tea & Coffee Pack 3,Snacks & Beverages,Tea & Coffee,Bru,214.0,195.98,False,0.0842
+P00216,SKU-SN00216,Bru Tea & Coffee Pack 4,Snacks & Beverages,Tea & Coffee,Bru,204.0,170.55,False,0.164
+P00217,SKU-SN00217,Bru Tea & Coffee Pack 5,Snacks & Beverages,Tea & Coffee,Bru,67.0,55.22,False,0.1758
+P00218,SKU-SN00218,Bru Tea & Coffee Pack 6,Snacks & Beverages,Tea & Coffee,Bru,454.0,403.1,False,0.1121
+P00219,SKU-SN00219,Nescafe Tea & Coffee Pack 1,Snacks & Beverages,Tea & Coffee,Nescafe,336.0,310.21,False,0.0768
+P00220,SKU-SN00220,Nescafe Tea & Coffee Pack 2,Snacks & Beverages,Tea & Coffee,Nescafe,228.0,183.73,False,0.1942
+P00221,SKU-SN00221,Nescafe Tea & Coffee Pack 3,Snacks & Beverages,Tea & Coffee,Nescafe,518.0,430.93,False,0.1681
+P00222,SKU-SN00222,Nescafe Tea & Coffee Pack 4,Snacks & Beverages,Tea & Coffee,Nescafe,203.0,171.28,False,0.1563
+P00223,SKU-SN00223,Nescafe Tea & Coffee Pack 5,Snacks & Beverages,Tea & Coffee,Nescafe,384.0,340.11,False,0.1143
+P00224,SKU-SN00224,Nescafe Tea & Coffee Pack 6,Snacks & Beverages,Tea & Coffee,Nescafe,355.0,333.17,False,0.0615
+P00225,SKU-SN00225,Nescafe Tea & Coffee Pack 7,Snacks & Beverages,Tea & Coffee,Nescafe,156.0,135.17,False,0.1335
+P00226,SKU-SN00226,Nescafe Tea & Coffee Pack 8,Snacks & Beverages,Tea & Coffee,Nescafe,135.0,123.76,False,0.0833
+P00227,SKU-PE00227,Dove Bath & Body Pack 1,Personal Care,Bath & Body,Dove,359.0,287.75,False,0.1985
+P00228,SKU-PE00228,Dove Bath & Body Pack 2,Personal Care,Bath & Body,Dove,253.0,208.1,False,0.1775
+P00229,SKU-PE00229,Dove Bath & Body Pack 3,Personal Care,Bath & Body,Dove,416.0,382.79,False,0.0798
+P00230,SKU-PE00230,Dove Bath & Body Pack 4,Personal Care,Bath & Body,Dove,213.0,188.51,False,0.115
+P00231,SKU-PE00231,Dove Bath & Body Pack 5,Personal Care,Bath & Body,Dove,75.0,62.57,False,0.1657
+P00232,SKU-PE00232,Lux Bath & Body Pack 1,Personal Care,Bath & Body,Lux,221.0,203.08,False,0.0811
+P00233,SKU-PE00233,Lux Bath & Body Pack 2,Personal Care,Bath & Body,Lux,113.0,91.87,False,0.187
+P00234,SKU-PE00234,Lux Bath & Body Pack 3,Personal Care,Bath & Body,Lux,62.0,56.26,False,0.0926
+P00235,SKU-PE00235,Lux Bath & Body Pack 4,Personal Care,Bath & Body,Lux,155.0,135.06,False,0.1286
+P00236,SKU-PE00236,Lux Bath & Body Pack 5,Personal Care,Bath & Body,Lux,265.0,230.8,False,0.1291
+P00237,SKU-PE00237,Mamaearth Bath & Body Pack 1,Personal Care,Bath & Body,Mamaearth,77.0,69.75,False,0.0942
+P00238,SKU-PE00238,Mamaearth Bath & Body Pack 2,Personal Care,Bath & Body,Mamaearth,361.0,307.12,False,0.1493
+P00239,SKU-PE00239,Mamaearth Bath & Body Pack 3,Personal Care,Bath & Body,Mamaearth,288.0,243.7,False,0.1538
+P00240,SKU-PE00240,Mamaearth Bath & Body Pack 4,Personal Care,Bath & Body,Mamaearth,331.0,308.45,False,0.0681
+P00241,SKU-PE00241,Mamaearth Bath & Body Pack 5,Personal Care,Bath & Body,Mamaearth,182.0,157.33,False,0.1355
+P00242,SKU-PE00242,Mamaearth Bath & Body Pack 6,Personal Care,Bath & Body,Mamaearth,172.0,141.34,False,0.1783
+P00243,SKU-PE00243,Mamaearth Bath & Body Pack 7,Personal Care,Bath & Body,Mamaearth,226.0,188.12,False,0.1676
+P00244,SKU-PE00244,Colgate Oral Care Pack 1,Personal Care,Oral Care,Colgate,131.0,106.46,False,0.1873
+P00245,SKU-PE00245,Colgate Oral Care Pack 2,Personal Care,Oral Care,Colgate,146.0,119.86,False,0.179
+P00246,SKU-PE00246,Colgate Oral Care Pack 3,Personal Care,Oral Care,Colgate,101.0,87.89,False,0.1298
+P00247,SKU-PE00247,Colgate Oral Care Pack 4,Personal Care,Oral Care,Colgate,136.0,125.84,False,0.0747
+P00248,SKU-PE00248,Colgate Oral Care Pack 5,Personal Care,Oral Care,Colgate,112.0,90.9,False,0.1884
+P00249,SKU-PE00249,Colgate Oral Care Pack 6,Personal Care,Oral Care,Colgate,154.0,140.93,False,0.0849
+P00250,SKU-PE00250,Colgate Oral Care Pack 7,Personal Care,Oral Care,Colgate,101.0,92.23,False,0.0868
+P00251,SKU-PE00251,Colgate Oral Care Pack 8,Personal Care,Oral Care,Colgate,44.0,35.65,False,0.1898
+P00252,SKU-PE00252,Sensodyne Oral Care Pack 1,Personal Care,Oral Care,Sensodyne,121.0,108.53,False,0.1031
+P00253,SKU-PE00253,Sensodyne Oral Care Pack 2,Personal Care,Oral Care,Sensodyne,148.0,138.97,False,0.061
+P00254,SKU-PE00254,Sensodyne Oral Care Pack 3,Personal Care,Oral Care,Sensodyne,90.0,75.74,False,0.1584
+P00255,SKU-PE00255,Sensodyne Oral Care Pack 4,Personal Care,Oral Care,Sensodyne,154.0,123.59,False,0.1975
+P00256,SKU-PE00256,Sensodyne Oral Care Pack 5,Personal Care,Oral Care,Sensodyne,152.0,132.72,False,0.1268
+P00257,SKU-PE00257,Sensodyne Oral Care Pack 6,Personal Care,Oral Care,Sensodyne,177.0,144.0,False,0.1864
+P00258,SKU-PE00258,Sensodyne Oral Care Pack 7,Personal Care,Oral Care,Sensodyne,170.0,136.88,False,0.1948
+P00259,SKU-PE00259,Sensodyne Oral Care Pack 8,Personal Care,Oral Care,Sensodyne,181.0,148.18,False,0.1813
+P00260,SKU-PE00260,Sensodyne Oral Care Pack 9,Personal Care,Oral Care,Sensodyne,61.0,51.09,False,0.1625
+P00261,SKU-HO00261,Vim Cleaning Pack 1,Household,Cleaning,Vim,281.0,238.41,False,0.1516
+P00262,SKU-HO00262,Vim Cleaning Pack 2,Household,Cleaning,Vim,467.0,374.61,False,0.1978
+P00263,SKU-HO00263,Vim Cleaning Pack 3,Household,Cleaning,Vim,163.0,136.48,False,0.1627
+P00264,SKU-HO00264,Vim Cleaning Pack 4,Household,Cleaning,Vim,369.0,328.96,False,0.1085
+P00265,SKU-HO00265,Vim Cleaning Pack 5,Household,Cleaning,Vim,90.0,84.08,False,0.0658
+P00266,SKU-HO00266,Vim Cleaning Pack 6,Household,Cleaning,Vim,381.0,332.02,False,0.1286
+P00267,SKU-HO00267,Vim Cleaning Pack 7,Household,Cleaning,Vim,474.0,414.7,False,0.1251
+P00268,SKU-HO00268,Vim Cleaning Pack 8,Household,Cleaning,Vim,470.0,414.72,False,0.1176
+P00269,SKU-HO00269,Vim Cleaning Pack 9,Household,Cleaning,Vim,388.0,360.11,False,0.0719
+P00270,SKU-HO00270,Surf Excel Cleaning Pack 1,Household,Cleaning,Surf Excel,282.0,233.41,False,0.1723
+P00271,SKU-HO00271,Surf Excel Cleaning Pack 2,Household,Cleaning,Surf Excel,446.0,367.88,False,0.1752
+P00272,SKU-HO00272,Surf Excel Cleaning Pack 3,Household,Cleaning,Surf Excel,51.0,45.28,False,0.1122
+P00273,SKU-HO00273,Surf Excel Cleaning Pack 4,Household,Cleaning,Surf Excel,57.0,52.71,False,0.0753
+P00274,SKU-HO00274,Surf Excel Cleaning Pack 5,Household,Cleaning,Surf Excel,336.0,282.29,False,0.1599
+P00275,SKU-HO00275,Surf Excel Cleaning Pack 6,Household,Cleaning,Surf Excel,379.0,310.34,False,0.1812
+P00276,SKU-HO00276,Surf Excel Cleaning Pack 7,Household,Cleaning,Surf Excel,364.0,301.35,False,0.1721
+P00277,SKU-HO00277,Harpic Cleaning Pack 1,Household,Cleaning,Harpic,139.0,118.56,False,0.1471
+P00278,SKU-HO00278,Harpic Cleaning Pack 2,Household,Cleaning,Harpic,417.0,391.72,False,0.0606
+P00279,SKU-HO00279,Harpic Cleaning Pack 3,Household,Cleaning,Harpic,264.0,223.13,False,0.1548
+P00280,SKU-HO00280,Harpic Cleaning Pack 4,Household,Cleaning,Harpic,48.0,42.42,False,0.1162
+P00281,SKU-HO00281,Harpic Cleaning Pack 5,Household,Cleaning,Harpic,434.0,367.15,False,0.154
+P00282,SKU-HO00282,Harpic Cleaning Pack 6,Household,Cleaning,Harpic,141.0,115.71,False,0.1794
+P00283,SKU-HO00283,Scotch-Brite Kitchen Needs Pack 1,Household,Kitchen Needs,Scotch-Brite,154.0,126.36,False,0.1795
+P00284,SKU-HO00284,Scotch-Brite Kitchen Needs Pack 2,Household,Kitchen Needs,Scotch-Brite,140.0,120.03,False,0.1426
+P00285,SKU-HO00285,Scotch-Brite Kitchen Needs Pack 3,Household,Kitchen Needs,Scotch-Brite,169.0,152.36,False,0.0985
+P00286,SKU-HO00286,Scotch-Brite Kitchen Needs Pack 4,Household,Kitchen Needs,Scotch-Brite,316.0,288.74,False,0.0863
+P00287,SKU-HO00287,Scotch-Brite Kitchen Needs Pack 5,Household,Kitchen Needs,Scotch-Brite,75.0,66.91,False,0.1079
+P00288,SKU-HO00288,DashCart Home Kitchen Needs Pack 1,Household,Kitchen Needs,DashCart Home,292.0,189.88,False,0.3497
+P00289,SKU-HO00289,DashCart Home Kitchen Needs Pack 2,Household,Kitchen Needs,DashCart Home,139.0,109.28,False,0.2138
+P00290,SKU-HO00290,DashCart Home Kitchen Needs Pack 3,Household,Kitchen Needs,DashCart Home,91.0,68.05,False,0.2522
+P00291,SKU-HO00291,DashCart Home Kitchen Needs Pack 4,Household,Kitchen Needs,DashCart Home,349.0,250.86,False,0.2812
+P00292,SKU-HO00292,DashCart Home Kitchen Needs Pack 5,Household,Kitchen Needs,DashCart Home,229.0,180.85,False,0.2103
+P00293,SKU-HO00293,DashCart Home Kitchen Needs Pack 6,Household,Kitchen Needs,DashCart Home,325.0,248.86,False,0.2343
+P00294,SKU-HO00294,DashCart Home Kitchen Needs Pack 7,Household,Kitchen Needs,DashCart Home,90.0,71.64,False,0.204
+P00295,SKU-FR00295,Maggi Instant Food Pack 1,Frozen & Instant,Instant Food,Maggi,25.0,22.79,False,0.0884
+P00296,SKU-FR00296,Maggi Instant Food Pack 2,Frozen & Instant,Instant Food,Maggi,17.0,14.9,False,0.1235
+P00297,SKU-FR00297,Maggi Instant Food Pack 3,Frozen & Instant,Instant Food,Maggi,119.0,106.14,False,0.1081
+P00298,SKU-FR00298,Maggi Instant Food Pack 4,Frozen & Instant,Instant Food,Maggi,84.0,67.68,False,0.1943
+P00299,SKU-FR00299,Maggi Instant Food Pack 5,Frozen & Instant,Instant Food,Maggi,139.0,120.13,False,0.1358
+P00300,SKU-FR00300,Maggi Instant Food Pack 6,Frozen & Instant,Instant Food,Maggi,61.0,49.68,False,0.1856
+P00301,SKU-FR00301,Maggi Instant Food Pack 7,Frozen & Instant,Instant Food,Maggi,53.0,47.41,False,0.1055
+P00302,SKU-FR00302,Maggi Instant Food Pack 8,Frozen & Instant,Instant Food,Maggi,165.0,142.87,False,0.1341
+P00303,SKU-FR00303,Yippee Instant Food Pack 1,Frozen & Instant,Instant Food,Yippee,112.0,95.03,False,0.1515
+P00304,SKU-FR00304,Yippee Instant Food Pack 2,Frozen & Instant,Instant Food,Yippee,64.0,58.0,False,0.0938
+P00305,SKU-FR00305,Yippee Instant Food Pack 3,Frozen & Instant,Instant Food,Yippee,68.0,62.44,False,0.0818
+P00306,SKU-FR00306,Yippee Instant Food Pack 4,Frozen & Instant,Instant Food,Yippee,159.0,143.15,False,0.0997
+P00307,SKU-FR00307,Yippee Instant Food Pack 5,Frozen & Instant,Instant Food,Yippee,107.0,88.72,False,0.1708
+P00308,SKU-FR00308,Yippee Instant Food Pack 6,Frozen & Instant,Instant Food,Yippee,144.0,126.52,False,0.1214
+P00309,SKU-FR00309,Yippee Instant Food Pack 7,Frozen & Instant,Instant Food,Yippee,93.0,74.47,False,0.1992
+P00310,SKU-FR00310,Yippee Instant Food Pack 8,Frozen & Instant,Instant Food,Yippee,126.0,104.07,False,0.174
+P00311,SKU-FR00311,Yippee Instant Food Pack 9,Frozen & Instant,Instant Food,Yippee,164.0,136.08,False,0.1702
+P00312,SKU-FR00312,MTR Instant Food Pack 1,Frozen & Instant,Instant Food,MTR,45.0,38.76,False,0.1387
+P00313,SKU-FR00313,MTR Instant Food Pack 2,Frozen & Instant,Instant Food,MTR,31.0,26.31,False,0.1513
+P00314,SKU-FR00314,MTR Instant Food Pack 3,Frozen & Instant,Instant Food,MTR,173.0,150.2,False,0.1318
+P00315,SKU-FR00315,MTR Instant Food Pack 4,Frozen & Instant,Instant Food,MTR,86.0,80.41,False,0.065
+P00316,SKU-FR00316,MTR Instant Food Pack 5,Frozen & Instant,Instant Food,MTR,173.0,160.13,False,0.0744
+P00317,SKU-FR00317,MTR Instant Food Pack 6,Frozen & Instant,Instant Food,MTR,21.0,19.02,False,0.0943
+P00318,SKU-FR00318,MTR Instant Food Pack 7,Frozen & Instant,Instant Food,MTR,25.0,21.91,False,0.1236
+P00319,SKU-FR00319,MTR Instant Food Pack 8,Frozen & Instant,Instant Food,MTR,100.0,89.62,False,0.1038
+P00320,SKU-FR00320,Kwality Walls Ice Cream Pack 1,Frozen & Instant,Ice Cream,Kwality Walls,66.0,58.49,True,0.1138
+P00321,SKU-FR00321,Kwality Walls Ice Cream Pack 2,Frozen & Instant,Ice Cream,Kwality Walls,49.0,41.27,True,0.1578
+P00322,SKU-FR00322,Kwality Walls Ice Cream Pack 3,Frozen & Instant,Ice Cream,Kwality Walls,96.0,86.18,True,0.1023
+P00323,SKU-FR00323,Kwality Walls Ice Cream Pack 4,Frozen & Instant,Ice Cream,Kwality Walls,156.0,137.54,True,0.1183
+P00324,SKU-FR00324,Kwality Walls Ice Cream Pack 5,Frozen & Instant,Ice Cream,Kwality Walls,31.0,28.65,True,0.0758
+P00325,SKU-FR00325,Amul Ice Cream Pack 1,Frozen & Instant,Ice Cream,Amul,306.0,287.59,True,0.0602
+P00326,SKU-FR00326,Amul Ice Cream Pack 2,Frozen & Instant,Ice Cream,Amul,193.0,168.19,True,0.1285
+P00327,SKU-FR00327,Amul Ice Cream Pack 3,Frozen & Instant,Ice Cream,Amul,137.0,120.51,True,0.1204
+P00328,SKU-FR00328,Amul Ice Cream Pack 4,Frozen & Instant,Ice Cream,Amul,280.0,230.22,True,0.1778
+P00329,SKU-FR00329,Amul Ice Cream Pack 5,Frozen & Instant,Ice Cream,Amul,113.0,101.12,True,0.1051
+P00330,SKU-FR00330,Havmor Ice Cream Pack 1,Frozen & Instant,Ice Cream,Havmor,184.0,155.36,True,0.1557
+P00331,SKU-FR00331,Havmor Ice Cream Pack 2,Frozen & Instant,Ice Cream,Havmor,103.0,92.05,True,0.1063
+P00332,SKU-FR00332,Havmor Ice Cream Pack 3,Frozen & Instant,Ice Cream,Havmor,328.0,306.09,True,0.0668
+P00333,SKU-FR00333,Havmor Ice Cream Pack 4,Frozen & Instant,Ice Cream,Havmor,177.0,148.75,True,0.1596
+P00334,SKU-FR00334,Havmor Ice Cream Pack 5,Frozen & Instant,Ice Cream,Havmor,78.0,72.8,True,0.0667
+P00335,SKU-FR00335,Havmor Ice Cream Pack 6,Frozen & Instant,Ice Cream,Havmor,74.0,60.04,True,0.1886
+P00336,SKU-FR00336,Havmor Ice Cream Pack 7,Frozen & Instant,Ice Cream,Havmor,33.0,30.15,True,0.0864

@@ -1,0 +1,64 @@
+{
+  "name": "DashCart Command Center",
+  "dataColors": ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#6250d6", "#e34948"],
+  "background": "#fcfcfb",
+  "foreground": "#0b0b0b",
+  "tableAccent": "#2a78d6",
+  "good": "#0ca30c",
+  "neutral": "#fab219",
+  "bad": "#d03b3b",
+  "maximum": "#104281",
+  "center": "#f0efec",
+  "minimum": "#cde2fb",
+  "textClasses": {
+    "callout":  { "fontSize": 28, "fontFace": "Segoe UI Semibold", "color": "#0b0b0b" },
+    "title":    { "fontSize": 12, "fontFace": "Segoe UI Semibold", "color": "#0b0b0b" },
+    "header":   { "fontSize": 11, "fontFace": "Segoe UI Semibold", "color": "#52514e" },
+    "label":    { "fontSize": 10, "fontFace": "Segoe UI", "color": "#52514e" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#ffffff" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#e1e0d9" } }, "radius": 8 }],
+        "dropShadow": [{ "show": false }],
+        "visualHeader": [{ "show": true }],
+        "title": [{ "show": true, "fontColor": { "solid": { "color": "#0b0b0b" } }, "fontSize": 12 }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#f9f9f7" } }, "transparency": 0 }],
+        "outspace":   [{ "color": { "solid": { "color": "#f9f9f7" } } }]
+      }
+    },
+    "lineChart": {
+      "*": {
+        "lineStyles": [{ "strokeWidth": 2, "showMarker": false }],
+        "valueAxis":    [{ "gridlineColor": { "solid": { "color": "#e1e0d9" } }, "gridlineThickness": 1 }],
+        "categoryAxis": [{ "gridlineShow": false }]
+      }
+    },
+    "clusteredBarChart": {
+      "*": { "valueAxis": [{ "gridlineColor": { "solid": { "color": "#e1e0d9" } } }] }
+    },
+    "card": {
+      "*": {
+        "labels":         [{ "color": { "solid": { "color": "#0b0b0b" } }, "fontSize": 26 }],
+        "categoryLabels": [{ "color": { "solid": { "color": "#52514e" } }, "fontSize": 10 }]
+      }
+    },
+    "slicer": {
+      "*": {
+        "header": [{ "fontColor": { "solid": { "color": "#52514e" } } }],
+        "items":  [{ "fontColor": { "solid": { "color": "#0b0b0b" } } }]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "columnHeaders": [{ "fontColor": { "solid": { "color": "#52514e" } }, "backColor": { "solid": { "color": "#ffffff" } } }],
+        "grid": [{ "gridHorizontalColor": { "solid": { "color": "#e1e0d9" } } }]
+      }
+    }
+  }
+}

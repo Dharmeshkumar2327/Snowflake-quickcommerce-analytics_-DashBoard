@@ -1,0 +1,17 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install numpy pandas scikit-learn
+      - name: Compile Python
+        run: python -m py_compile data_generator/*.py snowpark/*.py streamlit/*.py tests/*.py
+      - name: Regenerate data deterministically (smoke test)
+        run: python data_generator/generate_data.py --orders 5000 --customers 1500 --sessions 3000 --out /tmp/dashcart_data
+      - name: Offline reference check on committed data
+        run: python tests/local_reference_check.py

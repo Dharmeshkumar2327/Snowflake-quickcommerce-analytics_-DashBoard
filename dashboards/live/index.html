@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DashCart Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700&family=Red+Hat+Text:wght@400;500;600&display=swap">
+<style>
+/* VOICE: a newspaper graphics desk briefing an ops head: finding first, exact figures, no props.
+   IDEA: the dispatch board on a dark-store wall: city lanes, hour grid, a clock you are racing.
+   PICTURE: the city x hour SLA board as the main graphic, beside a multi-city trend.
+   COLOUR and TYPE: oxford blue band, white panels, magenta for the result; Red Hat Display + Text.
+   LAYOUT: title band with filters, KPI row, trend + SLA board, then ops, money, customers. */
+:root{color-scheme:light dark;
+--bg:light-dark(#f4f5f8,#070f26);--panel:light-dark(#ffffff,#0f1a38);--band:#0b1f4b;--ink:light-dark(#0b0b0b,#f0efec);
+--ink2:light-dark(#52514e,#c3c2b7);--mute:#898781;--grid:light-dark(#e1e0d9,#24305a);--base:light-dark(#c3c2b7,#3a4670);
+--line:light-dark(rgba(11,11,11,.10),rgba(255,255,255,.10));--accent:#e0115f;--mid:light-dark(#f0efec,#2a3354);
+--good:#0ca30c;--warn:#fab219;--crit:#d03b3b;--up:light-dark(#006300,#0ca30c);
+--c0:light-dark(#2a78d6,#3987e5);--c1:light-dark(#eb6834,#d95926);--c2:light-dark(#1baf7a,#199e70);
+--c3:light-dark(#eda100,#c98500);--c4:light-dark(#e87ba4,#d55181);--c5:light-dark(#008300,#0ca30c);
+--blue:light-dark(#2a78d6,#3987e5);--red:#d03b3b}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Red Hat Text",system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Red Hat Display",system-ui,sans-serif;margin:0;text-wrap:balance}
+.top{background:var(--band);color:#fff;padding:clamp(22px,3.5vw,44px) max(4vw,16px) 22px}
+.top h1{font-size:clamp(28px,4.2vw,46px);line-height:1.05;font-weight:700;max-width:22ch}
+.top p{margin:10px 0 0;color:#c9d3ee;max-width:70ch}
+.brand{font:600 14px "Red Hat Text";color:#9fb2e6;margin-bottom:10px}
+.filters{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin-top:20px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:500 14px "Red Hat Text";min-height:36px;padding:6px 12px;border-radius:18px;border:1px solid #3c5594;background:transparent;color:#dfe6f8;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip[aria-pressed=true]{background:#fff;color:#0b1f4b;border-color:#fff}
+.chip:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+label.sel{display:flex;gap:8px;align-items:center;font-size:14px;color:#c9d3ee}
+select{font:500 15px "Red Hat Text";min-height:38px;border-radius:8px;border:1px solid #3c5594;background:#12295e;color:#fff;padding:4px 10px}
+.wrap{max-width:1320px;margin:0 auto;padding:18px max(3vw,12px) 40px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:-4px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .l{font-size:13px;color:var(--ink2)}.kpi .v{font:700 clamp(24px,2.6vw,30px)/1.1 "Red Hat Display";margin-top:4px;white-space:nowrap}
+.kpi .d{font-size:13px;color:var(--ink2);margin-top:4px;white-space:nowrap}.kpi .d b{font-weight:600}
+.kpi.hero{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent)}
+.grid{display:grid;gap:12px;margin-top:12px;grid-template-columns:repeat(12,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;grid-column:span 12}
+@media(min-width:980px){.s7{grid-column:span 7}.s5{grid-column:span 5}.s6{grid-column:span 6}.s4{grid-column:span 4}.s8{grid-column:span 8}}
+.card h2{font-size:18px;font-weight:700;line-height:1.25}.card .sub{font-size:13.5px;color:var(--ink2);margin:3px 0 10px}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:flex-start}
+.seg{display:flex;flex-wrap:wrap;gap:4px}.seg button{font:500 13px "Red Hat Text";min-height:32px;padding:4px 10px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.card select{background:var(--panel);color:var(--ink);border-color:var(--line)}
+.fig{position:relative;min-height:300px}.fig.tall{min-height:340px}.fig.short{min-height:240px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--ink2);margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}.legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+.bars{display:grid;gap:7px}.bar{display:grid;grid-template-columns:minmax(90px,11em) 1fr auto;gap:10px;align-items:center;font-size:14px}
+.bar .t{height:14px;background:var(--mid);border-radius:4px;overflow:hidden}.bar .t>span{display:block;height:100%;border-radius:0 4px 4px 0}
+.bar .n{font-variant-numeric:tabular-nums;color:var(--ink2);white-space:nowrap;text-align:right;min-width:5.5em}
+.note{font-size:13px;color:var(--ink2);margin-top:10px}
+.insight{font-size:14.5px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.insight b{color:var(--accent);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14px}th{font-weight:600;color:var(--ink2);text-align:left;padding:7px 8px;border-bottom:1px solid var(--grid);cursor:pointer;white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums}td.r,th.r{text-align:right}
+.pill{display:inline-flex;gap:5px;align-items:center;white-space:nowrap}.pill i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.scroll{overflow-x:auto;max-height:420px;overflow-y:auto}#stores{min-width:600px}#stores td{white-space:nowrap}
+.tiers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tier{border:1px solid var(--line);border-radius:10px;padding:12px}.tier h3{font-size:15px}.tier dl{margin:8px 0 0;display:grid;grid-template-columns:1fr auto;gap:3px 10px;font-size:14px}
+.tier dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}.tier dt{color:var(--ink2)}
+#tip{position:fixed;pointer-events:none;z-index:9;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;box-shadow:0 6px 18px rgba(0,0,0,.18);display:none;max-width:260px}
+#tip .h{font-weight:600;margin-bottom:3px}#tip .row{display:flex;justify-content:space-between;gap:14px}#tip .row i{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px}
+.foot{font-size:13px;color:var(--ink2);margin-top:18px}
+details{margin-top:12px;font-size:14px}summary{cursor:pointer;font-weight:600}
+@media(max-width:600px){.bar{grid-template-columns:minmax(70px,8em) 1fr auto;font-size:13px}.tiers{grid-template-columns:1fr}table{font-size:13px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">DashCart · Ops &amp; Growth Command Center · Snowflake quick-commerce analytics</div>
+  <h1 id="headline">Loading the dispatch board…</h1>
+  <p id="lede">Synthetic DashCart data: 24 dark stores in 6 Indian cities, Jan 2025 – Oct 2026.</p>
+  <div class="filters">
+    <div class="chips" id="cityChips" role="group" aria-label="Cities"></div>
+    <label class="sel">From <select id="from"></select></label>
+    <label class="sel">To <select id="to"></select></label>
+    <div class="chips" id="presets"></div>
+  </div>
+</header>
+<main class="wrap">
+  <section class="kpis" id="kpis" aria-label="Headline figures"></section>
+  <div class="grid">
+    <section class="card s7" id="trend-card">
+      <div class="hd"><div><h2 id="trendTitle">Monthly GMV by city</h2><div class="sub">One line per city · hover for values</div></div>
+        <div class="seg" id="metricSeg"></div></div>
+      <div class="fig tall"><svg id="trend" role="img" aria-label="Monthly trend by city"></svg></div>
+      <div class="legend" id="trendLegend"></div>
+    </section>
+    <section class="card s5" id="sla-card">
+      <h2>On-time rate by city and hour</h2><div class="sub">Red = below 70% on-time · blue = above · delivered orders</div>
+      <div class="fig tall"><svg id="heat" role="img" aria-label="On-time heatmap city by hour"></svg></div>
+      <div class="insight" id="heatInsight"></div>
+    </section>
+    <section class="card s8" id="daily-card">
+      <div class="hd"><div><h2>Daily average delivery time</h2><div class="sub">Magenta dots: days above 2× the trailing 28-day average</div></div>
+        <label class="sel" style="color:var(--ink2)">City <select id="dailyCity"></select></label></div>
+      <div class="fig"><svg id="daily" role="img" aria-label="Daily delivery minutes"></svg></div>
+      <div class="insight" id="dailyInsight"></div>
+    </section>
+    <section class="card s4" id="weather-card">
+      <h2>Weather impact</h2><div class="sub">Avg delivery minutes · on-time rate</div>
+      <div class="bars" id="weather"></div>
+    </section>
+    <section class="card s6" id="cat-card">
+      <h2>Category revenue and gross margin</h2><div class="sub">Item revenue · gross margin % after COGS</div>
+      <div class="bars" id="cats"></div>
+    </section>
+    <section class="card s6" id="econ-card">
+      <h2>Where the GMV goes</h2><div class="sub">Unit economics for the selection, delivered orders</div>
+      <div class="bars" id="econ"></div>
+      <div class="insight" id="econInsight"></div>
+    </section>
+    <section class="card s7" id="store-card">
+      <h2>Store league table</h2><div class="sub">Click a header to sort · status: ≥80% on track, 65–80% at risk, &lt;65% breaching</div>
+      <div class="scroll"><table id="stores"><thead><tr>
+        <th data-k="store">Store</th><th data-k="city">City</th><th class="r" data-k="o">Orders</th><th class="r" data-k="nr">Net revenue</th><th class="r" data-k="ot">On-time</th><th class="r" data-k="cx">Cancelled</th></tr></thead><tbody></tbody></table></div>
+    </section>
+    <section class="card s5" id="tier-card">
+      <h2>Plus members are worth 2× Standard</h2><div class="sub">Customer 360 as of <span id="asof"></span> · all cities</div>
+      <div class="tiers" id="tiers"></div>
+      <h3 style="font-size:15px;margin-top:16px">Behavioural segments</h3><div class="sub">Customers · share of lifetime net revenue</div>
+      <div class="bars" id="segs"></div>
+    </section>
+    <section class="card s7" id="cohort-card">
+      <h2>Monthly cohort retention</h2><div class="sub">Share of each first-order cohort still ordering in month m · all cities</div>
+      <div class="fig tall"><svg id="cohort" role="img" aria-label="Cohort retention heatmap"></svg></div>
+    </section>
+    <section class="card s5" id="voc-card">
+      <h2>Voice of customer</h2><div class="sub">Review themes (excluding positive) · bar = count, label = avg rating</div>
+      <div class="bars" id="voc"></div>
+      <div class="note">In Snowflake these themes come from Cortex <code>CLASSIFY_TEXT</code>; here a rule-based stand-in with the same labels.</div>
+    </section>
+  </div>
+  <p class="foot">Data: DashCart synthetic dataset (repo <code>data/</code>), aggregated by <code>dashboards/build_bi_extracts.py</code> with the same logic as the Snowflake marts (<code>sql/04</code>). Built <span id="gen"></span>. In production this page reads <code>DASHCART.MARTS</code> Dynamic Tables (target lag 1 h).</p>
+  <details><summary>Use your own export</summary><p class="note">Run <code>python dashboards/build_bi_extracts.py</code> on fresh data and replace <code>dashboard_data.json</code> next to this page. The page redraws from that file alone.</p></details>
+</main>
+<div id="tip" role="status"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+{
+const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const CITIES=["Bengaluru","Chennai","Delhi","Hyderabad","Mumbai","Pune"];
+const col=c=>`var(--c${Math.max(0,CITIES.indexOf(c))})`;
+const inr=v=>{const a=Math.abs(v);return a>=1e7?`₹${(v/1e7).toFixed(2)} Cr`:a>=1e5?`₹${(v/1e5).toFixed(1)} L`:`₹${Math.round(v).toLocaleString('en-IN')}`};
+const pct=(v,d=1)=>isFinite(v)?`${(v*100).toFixed(d)}%`:'—', num=v=>Math.round(v).toLocaleString('en-IN');
+const MN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const mlab=m=>`${MN[+m.slice(5,7)-1]} ${m.slice(2,4)}`;
+let D, S={cities:new Set(CITIES), from:0, to:0, metric:'gmv', dailyCity:'Bengaluru', sort:['ot',1]};
+const tip=$('#tip');
+const showTip=(e,html)=>{tip.innerHTML=html;tip.style.display='block';const r=tip.getBoundingClientRect();
+  let x=e.clientX+14,y=e.clientY+14;if(x+r.width>innerWidth-8)x=e.clientX-r.width-14;if(y+r.height>innerHeight-8)y=e.clientY-r.height-14;tip.style.left=Math.max(8,x)+'px';tip.style.top=Math.max(8,y)+'px'};
+const hideTip=()=>tip.style.display='none';
+const months=()=>D.months.slice(S.from,S.to+1);
+const inSel=(m,c)=>{const i=D.months.indexOf(m);return i>=S.from&&i<=S.to&&S.cities.has(c)};
+const inPrev=(m,c)=>{const n=S.to-S.from+1,i=D.months.indexOf(m);return i>=S.from-n&&i<S.from&&S.cities.has(c)};
+const sumMc=pred=>{const t={o:0,dv:0,cx:0,gmv:0,dgmv:0,nr:0,cm:0,disc:0,ot:0,tm:0,dm:0};
+  for(const r of D.mc)if(pred(r[0],r[1]))D.mc_cols.slice(2).forEach((k,j)=>t[k]+=r[j+2]);return t};
+const K=t=>({orders:t.o,gmv:t.gmv,aov:t.dgmv/t.dv,cm:t.cm/t.dgmv,ot:t.ot/t.tm,cx:t.cx/t.o,mins:t.dm/t.tm,nr:t.nr,disc:t.disc});
+
+function kpis(){
+  const cur=K(sumMc(inSel)), prevT=sumMc(inPrev), prev=prevT.o?K(prevT):null, n=S.to-S.from+1;
+  const L=[['Orders','orders',num,'rel'],['GMV','gmv',inr,'rel'],['Avg order value','aov',v=>'₹'+num(v),'rel'],
+    ['Contribution margin','cm',v=>pct(v),'pp'],['On-time (SLA)','ot',v=>pct(v),'pp',1],['Cancelled','cx',v=>pct(v),'pp',0,1]];
+  $('#kpis').innerHTML=L.map(([l,k,f,mode,hero,inv])=>{let d='No prior period in data';
+    if(prev){const dv=mode==='rel'?(cur[k]/prev[k]-1)*100:(cur[k]-prev[k])*100, good=inv?dv<0:dv>0;
+      d=`<b style="color:${good?'var(--up)':'var(--crit)'}">${dv>=0?'▲':'▼'} ${Math.abs(dv).toFixed(1)}${mode==='rel'?'%':' pp'}</b> vs prior ${n} mo`}
+    return `<div class="kpi${hero?' hero':''}" id="kpi-${k}"><div class="l">${l}</div><div class="v">${f(cur[k])}</div><div class="d">${d}</div></div>`}).join('');
+  const span=`${mlab(D.months[S.from])} – ${mlab(D.months[S.to])}`, cs=S.cities.size===6?'all 6 cities':[...S.cities].join(', ');
+  $('#headline').textContent=`${inr(cur.gmv)} GMV, but ${Math.round((1-cur.ot)*100)}% of orders miss the promised time`;
+  $('#lede').textContent=`${span} · ${cs}. Contribution margin is ${pct(cur.cm)} of delivered GMV after discounts and COGS, and the average delivery takes ${cur.mins.toFixed(1)} min.`;
+}
+
+const METRICS={gmv:['GMV',t=>t.gmv,inr],o:['Orders',t=>t.o,num],ot:['On-time %',t=>t.ot/t.tm,v=>pct(v)],mins:['Avg delivery min',t=>t.dm/t.tm,v=>v.toFixed(1)+' min']};
+function trend(){
+  const s=$('#trend'),W=s.clientWidth,H=s.clientHeight,ms=months(),[name,fn,fmt]=METRICS[S.metric];
+  $('#trendTitle').textContent=`Monthly ${name} by city`;
+  const cs=CITIES.filter(c=>S.cities.has(c)), ser=cs.map(c=>({c,v:ms.map(m=>{const t=sumMc((mm,cc)=>mm===m&&cc===c);return t.o?fn(t):NaN})}));
+  const narrow=W<520,m={l:narrow?44:62,r:12,t:10,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const all=ser.flatMap(x=>x.v).filter(isFinite);let lo=Math.min(...all),hi=Math.max(...all);
+  if(S.metric==='gmv'||S.metric==='o')lo=0;else{const p=(hi-lo)*.15||1;lo-=p;hi+=p}
+  const y=d3.scaleLinear([lo,hi],[ih,0]).nice(),x=i=>ms.length<2?iw/2:i*iw/(ms.length-1);
+  const ticks=y.ticks(5),step=Math.ceil(ms.length/(narrow?4:8));
+  let g=ticks.map(t=>`<line x1="0" x2="${iw}" y1="${y(t)}" y2="${y(t)}" style="stroke:var(--grid)"/><text x="-8" y="${y(t)}" dy="4" text-anchor="end" font-size="12" style="fill:var(--mute)">${S.metric==='gmv'?inr(t).replace('.00',''):S.metric==='ot'?Math.round(t*100)+'%':num(t)}</text>`).join('');
+  g+=ms.map((mm,i)=>i%step===0?`<text x="${x(i)}" y="${ih+18}" text-anchor="middle" font-size="12" style="fill:var(--mute)">${mlab(mm)}</text>`:'').join('');
+  g+=`<line x1="0" x2="${iw}" y1="${ih}" y2="${ih}" style="stroke:var(--base)"/>`;
+  g+=ser.map(sr=>`<path d="${d3.line().defined(isFinite).x((d,i)=>x(i)).y(d=>y(d))(sr.v)}" fill="none" stroke-width="2" style="stroke:${col(sr.c)}"/>`).join('');
+  g+=`<line id="xh" y1="0" y2="${ih}" style="stroke:var(--base);display:none"/><g id="xd"></g><rect width="${iw}" height="${ih}" fill="transparent" id="hit"/>`;
+  s.innerHTML=`<g transform="translate(${m.l},${m.t})">${g}</g>`;
+  $('#trendLegend').innerHTML=cs.map(c=>`<span><i style="background:${col(c)}"></i>${c}</span>`).join('');
+  const hit=s.querySelector('#hit'),xh=s.querySelector('#xh'),xd=s.querySelector('#xd');
+  hit.onpointermove=e=>{const r=hit.getBoundingClientRect(),i=Math.max(0,Math.min(ms.length-1,Math.round((e.clientX-r.left)/(iw/Math.max(1,ms.length-1)))));
+    xh.setAttribute('x1',x(i));xh.setAttribute('x2',x(i));xh.style.display='';
+    xd.innerHTML=ser.filter(sr=>isFinite(sr.v[i])).map(sr=>`<circle cx="${x(i)}" cy="${y(sr.v[i])}" r="4.5" stroke-width="2" style="fill:${col(sr.c)};stroke:var(--panel)"/>`).join('');
+    const rows=ser.filter(sr=>isFinite(sr.v[i])).sort((a,b)=>b.v[i]-a.v[i]);
+    showTip(e,`<div class="h">${mlab(ms[i])}</div>`+rows.map(sr=>`<div class="row"><span><i style="background:${col(sr.c)}"></i>${sr.c}</span><b>${fmt(sr.v[i])}</b></div>`).join(''))};
+  hit.onpointerleave=()=>{xh.style.display='none';xd.innerHTML='';hideTip()};
+}
+
+function heat(){
+  const s=$('#heat'),W=s.clientWidth,H=s.clientHeight,cs=CITIES.filter(c=>S.cities.has(c));
+  const cell={};for(const [m,c,h,n,ot] of D.hc)if(inSel(m,c)){const k=c+'|'+h;cell[k]=cell[k]||[0,0];cell[k][0]+=n;cell[k][1]+=ot}
+  const narrow=W<520,m={l:narrow?70:84,r:4,t:4,b:22},iw=W-m.l-m.r,ih=H-m.t-m.b,cw=iw/24,ch=Math.min(44,ih/Math.max(1,cs.length));
+  let g='';
+  cs.forEach((c,ri)=>{g+=`<text x="-8" y="${ri*ch+ch/2}" dy="4" text-anchor="end" font-size="12.5" style="fill:var(--ink2)">${c}</text>`;
+    for(let h=0;h<24;h++){const v=cell[c+'|'+h],r=v&&v[0]>=10?v[1]/v[0]:NaN,x=h*cw,y=ri*ch;
+      const a=isFinite(r)?Math.min(1,Math.abs(r-.7)/.25):0,hue=r<.7?'var(--red)':'var(--blue)';
+      g+=`<g data-c="${c}" data-h="${h}"><rect x="${x+1}" y="${y+1}" width="${cw-2}" height="${ch-2}" rx="3" style="fill:var(--mid)"/>${isFinite(r)?`<rect x="${x+1}" y="${y+1}" width="${cw-2}" height="${ch-2}" rx="3" style="fill:${hue};fill-opacity:${a.toFixed(2)}"/>`:''}</g>`}});
+  for(let h=0;h<24;h+=narrow?6:3)g+=`<text x="${h*cw+cw/2}" y="${cs.length*ch+16}" text-anchor="middle" font-size="12" style="fill:var(--mute)">${h}h</text>`;
+  s.innerHTML=`<g transform="translate(${m.l},${m.t})">${g}</g>`;
+  s.querySelectorAll('g[data-c]').forEach(el=>{el.onpointermove=e=>{const v=cell[el.dataset.c+'|'+el.dataset.h];
+    showTip(e,`<div class="h">${el.dataset.c} · ${el.dataset.h}:00–${el.dataset.h}:59</div>`+(v&&v[0]>=10?`<div class="row"><span>On-time</span><b>${pct(v[1]/v[0])}</b></div><div class="row"><span>Delivered orders</span><b>${num(v[0])}</b></div>`:'<div>Too few orders</div>'))};el.onpointerleave=hideTip});
+  let pk=[0,0],ot=[0,0];for(const k in cell){const h=+k.split('|')[1];const t=h>=18&&h<=21?pk:ot;t[0]+=cell[k][0];t[1]+=cell[k][1]}
+  $('#heatInsight').innerHTML=pk[0]&&ot[0]?`Evening peak (18–21h): <b>${pct(pk[1]/pk[0])}</b> on-time vs ${pct(ot[1]/ot[0])} at other hours.`:'';
+}
+
+function daily(){
+  const s=$('#daily'),W=s.clientWidth,H=s.clientHeight,c=S.dailyCity,ms=new Set(months());
+  const rows=D.daily.filter(r=>r[1]===c&&ms.has(r[0].slice(0,7))&&r[4]!=null).map(r=>({d:new Date(r[0]),k:r[0],o:r[2],cx:r[3],v:r[4],ot:r[5]}));
+  if(!rows.length){s.innerHTML='';$('#dailyInsight').textContent='No delivered orders in this selection.';return}
+  const all=D.daily.filter(r=>r[1]===c&&r[4]!=null);const idx=new Map(all.map((r,i)=>[r[0],i]));
+  rows.forEach(r=>{const i=idx.get(r.k),w=all.slice(Math.max(0,i-28),i).map(q=>q[4]);const b=w.length>=7?w.reduce((a,b)=>a+b,0)/w.length:NaN;r.anom=isFinite(b)&&r.v>2*b;r.base=b});
+  const narrow=W<520,m={l:narrow?34:44,r:12,t:12,b:26},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const x=d3.scaleTime(d3.extent(rows,r=>r.d),[0,iw]),y=d3.scaleLinear([0,Math.max(15,d3.max(rows,r=>r.v))],[ih,0]).nice();
+  let g=y.ticks(5).map(t=>`<line x1="0" x2="${iw}" y1="${y(t)}" y2="${y(t)}" style="stroke:var(--grid)"/><text x="-8" y="${y(t)}" dy="4" text-anchor="end" font-size="12" style="fill:var(--mute)">${t}</text>`).join('');
+  {const xt=x.ticks(7),ev=Math.ceil(xt.length/(narrow?3:7));g+=xt.filter((t,i)=>i%ev===0).map(t=>`<text x="${x(t)}" y="${ih+18}" text-anchor="middle" font-size="12" style="fill:var(--mute)">${MN[t.getMonth()]} ${String(t.getFullYear()).slice(2)}</text>`).join('')}
+  g+=`<line x1="0" x2="${iw}" y1="${ih}" y2="${ih}" style="stroke:var(--base)"/>`;
+  g+=`<path d="${d3.line().x(r=>x(r.d)).y(r=>y(r.v))(rows)}" fill="none" stroke-width="1.5" style="stroke:${col(c)}"/>`;
+  const an=rows.filter(r=>r.anom);
+  g+=an.map(r=>`<circle cx="${x(r.d)}" cy="${y(r.v)}" r="5" stroke-width="2" style="fill:var(--accent);stroke:var(--panel)"/>`).join('');
+  const top=an.sort((a,b)=>b.v-a.v)[0];
+  if(top){const tx=x(top.d),right=tx>iw-170;g+=`<text x="${tx+(right?-10:10)}" y="${y(top.v)+4}" text-anchor="${right?'end':'start'}" font-size="12.5" font-weight="600" style="fill:var(--ink)">${top.d.getDate()} ${MN[top.d.getMonth()]} ${top.d.getFullYear()}: ${top.v.toFixed(0)} min</text>`}
+  g+=`<line id="dxh" y1="0" y2="${ih}" style="stroke:var(--base);display:none"/><rect width="${iw}" height="${ih}" fill="transparent" id="dhit"/>`;
+  s.innerHTML=`<g transform="translate(${m.l},${m.t})">${g}</g>`;
+  const hit=s.querySelector('#dhit'),xh=s.querySelector('#dxh'),bis=d3.bisector(r=>r.d).center;
+  rows.sort((a,b)=>a.d-b.d);
+  hit.onpointermove=e=>{const r=hit.getBoundingClientRect(),q=rows[bis(rows,x.invert(e.clientX-r.left))];xh.setAttribute('x1',x(q.d));xh.setAttribute('x2',x(q.d));xh.style.display='';
+    showTip(e,`<div class="h">${c} · ${q.d.getDate()} ${MN[q.d.getMonth()]} ${q.d.getFullYear()}</div><div class="row"><span>Avg delivery</span><b>${q.v.toFixed(1)} min</b></div><div class="row"><span>Orders</span><b>${q.o}</b></div><div class="row"><span>Cancelled</span><b>${q.cx}</b></div><div class="row"><span>On-time</span><b>${q.ot==null?'—':pct(q.ot)}</b></div>${q.anom?'<div style="color:var(--accent);font-weight:600">Anomaly flagged</div>':''}`)};
+  hit.onpointerleave=()=>{xh.style.display='none';hideTip()};
+  $('#dailyInsight').innerHTML=top?`<b>${an.length} anomal${an.length>1?'ies':'y'}</b> in ${c} for this period. Worst: ${top.d.getDate()} ${MN[top.d.getMonth()]} ${top.d.getFullYear()} at ${top.v.toFixed(1)} min vs a ${top.base.toFixed(1)}-min baseline, with ${top.cx} of ${top.o} orders cancelled.`:`No anomalous days in ${c} for this period. Try Bengaluru with March 2026 in range.`;
+}
+
+const barRows=(items,max,fmtR,color)=>items.map(it=>`<div class="bar" id="${esc(it.id||'')}"><span>${esc(it.l)}</span><div class="t"><span style="width:${Math.max(1,it.v/max*100).toFixed(1)}%;background:${color||it.c||'var(--blue)'}"></span></div><span class="n">${fmtR(it)}</span></div>`).join('');
+
+function weather(){
+  const a={};for(const [m,c,w,n,ot,dm] of D.wx)if(inSel(m,c)){a[w]=a[w]||[0,0,0];a[w][0]+=n;a[w][1]+=ot;a[w][2]+=dm}
+  const it=Object.entries(a).map(([w,[n,ot,dm]])=>({l:w,v:dm/n,ot:ot/n,n})).sort((x,y)=>y.v-x.v);
+  $('#weather').innerHTML=barRows(it,Math.max(...it.map(i=>i.v)),i=>`${i.v.toFixed(1)} min · ${pct(i.ot,0)}`);
+}
+function cats(){
+  const a={};for(const [m,c,k,rev,cogs] of D.cc)if(inSel(m,c)){a[k]=a[k]||[0,0];a[k][0]+=rev;a[k][1]+=cogs}
+  const it=Object.entries(a).map(([k,[r,c]])=>({l:k,v:r,gm:(r-c)/r})).sort((x,y)=>y.v-x.v);
+  $('#cats').innerHTML=barRows(it,Math.max(...it.map(i=>i.v)),i=>`${inr(i.v)} · ${pct(i.gm)}`);
+}
+function econ(){
+  const t=sumMc(inSel),fee=t.nr-(t.dgmv-t.disc),cogs=t.nr-t.cm;
+  const it=[{l:'Delivered GMV',v:t.dgmv,c:'var(--blue)'},{l:'− Discounts',v:t.disc,c:'var(--red)'},{l:'+ Delivery fees',v:Math.max(0,fee),c:'var(--blue)'},{l:'− COGS',v:cogs,c:'var(--red)'},{l:'= Contribution margin',v:t.cm,c:'var(--accent)'}];
+  $('#econ').innerHTML=barRows(it,t.dgmv,i=>`${inr(i.v)} · ${pct(i.v/t.dgmv)}`);
+  $('#econInsight').innerHTML=`Discounts take <b>${pct(t.disc/t.dgmv)}</b> of delivered GMV, which is ${(t.disc/Math.max(1,t.cm)).toFixed(1)}× the margin left over. Coupons are the biggest lever.`;
+}
+function stores(){
+  const a={};for(const [m,id,c,o,nr,ot,tm,cx] of D.stores)if(inSel(m,c)){const r=a[id]=a[id]||{store:id,city:c,o:0,nr:0,ot:0,tm:0,cx:0};r.o+=o;r.nr+=nr;r.ot+=ot;r.tm+=tm;r.cx+=cx}
+  const rows=Object.values(a).map(r=>({...r,ot:r.ot/r.tm,cx:r.cx/r.o})),[k,dir]=S.sort;
+  rows.sort((x,y)=>(typeof x[k]==='string'?x[k].localeCompare(y[k]):x[k]-y[k])*dir);
+  const st=v=>v>=.8?['var(--good)','On track']:v>=.65?['var(--warn)','At risk']:['var(--crit)','Breaching'];
+  $('#stores tbody').innerHTML=rows.map(r=>{const [sc,sl]=st(r.ot);return `<tr><td>${esc(r.store)}</td><td><span class="pill"><i style="background:${col(r.city)};border-radius:50%"></i>${esc(r.city)}</span></td><td class="r">${num(r.o)}</td><td class="r">${inr(r.nr)}</td><td class="r"><span class="pill" title="${sl}"><i style="background:${sc}"></i>${pct(r.ot)} <span style="color:var(--ink2);font-size:12px">${sl}</span></span></td><td class="r">${pct(r.cx)}</td></tr>`}).join('');
+  document.querySelectorAll('#stores th').forEach(th=>{th.setAttribute('aria-sort',th.dataset.k===k?(dir>0?'ascending':'descending'):'none');th.textContent=th.textContent.replace(/ [▲▼]$/,'')+(th.dataset.k===k?(dir>0?' ▲':' ▼'):'')});
+}
+function statics(){
+  $('#asof').textContent=D.as_of;$('#gen').textContent=D.generated;
+  $('#tiers').innerHTML=D.tiers.map(([t,n,opm,ltv,ch])=>`<div class="tier" id="tier-${esc(t)}"><h3>${esc(t)}</h3><dl><dt>Customers</dt><dd>${num(n)}</dd><dt>Orders / month</dt><dd>${opm.toFixed(2)}</dd><dt>Avg lifetime value</dt><dd>${inr(ltv)}</dd><dt>Inactive 45+ days</dt><dd>${pct(ch)}</dd></dl></div>`).join('');
+  const tot=D.segments.reduce((a,s)=>a+s[2],0),sg=D.segments.map(([l,n,r])=>({l,v:n,r})).sort((a,b)=>b.r-a.r);
+  $('#segs').innerHTML=barRows(sg,Math.max(...sg.map(s=>s.v)),i=>`${num(i.v)} · ${pct(i.r/tot,0)} rev`);
+  const vt=D.review_themes.filter(r=>r[0]!=='Positive experience').map(([l,n,r])=>({l,v:n,r})).sort((a,b)=>b.v-a.v);
+  $('#voc').innerHTML=barRows(vt,Math.max(...vt.map(v=>v.v)),i=>`${num(i.v)} · ★ ${i.r.toFixed(1)}`,'var(--red)');
+}
+function cohort(){
+  const s=$('#cohort'),W=s.clientWidth,H=s.clientHeight,cs=[...new Set(D.cohort.map(r=>r[0]))].sort(),M=10;
+  const narrow=W<520,m={l:narrow?48:58,r:4,t:4,b:22},iw=W-m.l-m.r,ih=H-m.t-m.b,cw=iw/M,ch=ih/cs.length,map=new Map(D.cohort.map(r=>[r[0]+'|'+r[1],r[2]]));
+  const ramp=d3.scaleSequential([0,.6],d3.interpolateRgb('#cde2fb','#104281')).clamp(true);
+  let g='';cs.forEach((c,ri)=>{if(ri%(narrow?3:2)===0)g+=`<text x="-8" y="${ri*ch+ch/2}" dy="4" text-anchor="end" font-size="11.5" style="fill:var(--ink2)">${mlab(c)}</text>`;
+    for(let j=1;j<M;j++){const v=map.get(c+'|'+j);if(v==null)continue;g+=`<rect data-k="${c}|${j}" x="${(j-1)*cw*M/(M-1)+1}" y="${ri*ch+1}" width="${cw*M/(M-1)-2}" height="${Math.max(1,ch-2)}" rx="2" fill="${ramp(v)}"/>`}});
+  for(let j=1;j<M;j++)g+=`<text x="${(j-.5)*cw*M/(M-1)}" y="${ih+16}" text-anchor="middle" font-size="12" style="fill:var(--mute)">m${j}</text>`;
+  s.innerHTML=`<g transform="translate(${m.l},${m.t})">${g}</g>`;
+  s.querySelectorAll('rect[data-k]').forEach(el=>{el.onpointermove=e=>{const [c,j]=el.dataset.k.split('|');showTip(e,`<div class="h">Cohort ${mlab(c)}</div><div class="row"><span>Month ${j} retention</span><b>${pct(map.get(el.dataset.k))}</b></div>`)};el.onpointerleave=hideTip});
+}
+
+function renderAll(){kpis();trend();heat();daily();weather();cats();econ();stores()}
+function setupUI(){
+  $('#cityChips').innerHTML=CITIES.map(c=>`<button class="chip" aria-pressed="true" data-c="${c}"><i style="background:${col(c)}"></i>${c}</button>`).join('');
+  $('#cityChips').onclick=e=>{const b=e.target.closest('button');if(!b)return;const c=b.dataset.c;
+    if(S.cities.has(c)&&S.cities.size>1)S.cities.delete(c);else S.cities.add(c);
+    document.querySelectorAll('#cityChips .chip').forEach(x=>x.setAttribute('aria-pressed',S.cities.has(x.dataset.c)));
+    if(!S.cities.has(S.dailyCity)){S.dailyCity=[...S.cities][0];$('#dailyCity').value=S.dailyCity}renderAll()};
+  const opts=D.months.map((m,i)=>`<option value="${i}">${mlab(m)}</option>`).join('');$('#from').innerHTML=opts;$('#to').innerHTML=opts;
+  const sync=()=>{$('#from').value=S.from;$('#to').value=S.to;document.querySelectorAll('#presets .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f==S.from&&b.dataset.t==S.to))};
+  $('#from').onchange=e=>{S.from=+e.target.value;if(S.from>S.to)S.to=S.from;sync();renderAll()};
+  $('#to').onchange=e=>{S.to=+e.target.value;if(S.to<S.from)S.from=S.to;sync();renderAll()};
+  const L=D.months.length-1,i25=D.months.indexOf('2025-12'),P=[['All',0,L],['Last 3 mo',L-2,L],['Last 6 mo',L-5,L],['2025',0,i25],['2026 YTD',i25+1,L]];
+  $('#presets').innerHTML=P.map(([l,f,t])=>`<button class="chip" data-f="${f}" data-t="${t}">${l}</button>`).join('');
+  $('#presets').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.from=+b.dataset.f;S.to=+b.dataset.t;sync();renderAll()};
+  $('#metricSeg').innerHTML=Object.entries(METRICS).map(([k,[l]])=>`<button data-m="${k}" aria-pressed="${k===S.metric}">${l}</button>`).join('');
+  $('#metricSeg').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.metric=b.dataset.m;document.querySelectorAll('#metricSeg button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===S.metric));trend()};
+  $('#dailyCity').innerHTML=CITIES.map(c=>`<option>${c}</option>`).join('');$('#dailyCity').value=S.dailyCity;
+  $('#dailyCity').onchange=e=>{S.dailyCity=e.target.value;daily()};
+  document.querySelectorAll('#stores th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;S.sort=[k,S.sort[0]===k?-S.sort[1]:(k==='store'||k==='city'||k==='ot'?1:-1)];stores()});
+  S.from=0;S.to=L;sync();
+}
+const ro=new ResizeObserver(()=>{if(D){trend();heat();daily();cohort()}});
+fetch('dashboard_data.json').then(r=>r.json()).then(j=>{D=j;setupUI();statics();renderAll();cohort();['#trend','#heat','#daily','#cohort'].forEach(s=>ro.observe($(s)))})
+  .catch(err=>{$('#headline').textContent='Could not load dashboard_data.json';$('#lede').textContent=String(err)});
+}
+</script>
+</body>
+</html>

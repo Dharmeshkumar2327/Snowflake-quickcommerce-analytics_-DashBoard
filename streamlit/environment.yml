@@ -1,0 +1,6 @@
+name: dashcart_sis
+channels:
+  - snowflake
+dependencies:
+  - altair
+  - pandas

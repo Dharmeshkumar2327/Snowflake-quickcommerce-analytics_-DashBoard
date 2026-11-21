@@ -1,0 +1,18 @@
+# Snowflake CLI project definition (snow streamlit deploy)
+definition_version: 2
+entities:
+  dashcart_command_center:
+    type: streamlit
+    identifier:
+      name: DASHCART_COMMAND_CENTER
+      database: DASHCART
+      schema: MARTS
+    title: "DashCart Command Center"
+    query_warehouse: DASHCART_BI_WH
+    main_file: streamlit_app.py
+    stage: STREAMLIT_STAGE
+    artifacts:
+      - src: streamlit/streamlit_app.py
+        dest: streamlit_app.py
+      - src: streamlit/environment.yml
+        dest: environment.yml
